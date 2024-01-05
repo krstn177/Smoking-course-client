@@ -1,0 +1,77 @@
+<div class="w-full my-10 max-w-xs mx-auto">
+  <app-alert *ngIf="showAlert" [color]="alertColor">
+    {{  alertMsg  }}
+  </app-alert>
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Email
+      </label>
+      <app-input
+        [control]="registerForm.controls.email"
+        placeholder="Enter Email"
+      ></app-input>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+        Name
+      </label>
+      <app-input
+        [control]="registerForm.controls.name"
+        placeholder="Enter Name"
+        type="text"
+      ></app-input>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="age">
+        Age
+      </label>
+      <app-input
+        [control]="registerForm.controls.age"
+        placeholder="Enter Age"
+        type="number"
+        min="14"
+        max="120"
+      ></app-input>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="phoneNumber">
+        Phone Number
+      </label>
+      <app-input
+        [control]="registerForm.controls.phoneNumber"
+        placeholder="Enter Phone Number"
+        type="text"
+      ></app-input>
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <app-input
+        [control]="registerForm.controls.password"
+        placeholder="Enter Password"
+        type="password"
+      ></app-input>
+    </div>
+    <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Confirm Password
+        </label>
+        <app-input
+          [control]="registerForm.controls.confirm_password"
+          placeholder="Confirm Password"
+          type="password"
+        ></app-input> 
+      </div>
+    <div class="flex items-center justify-between">
+      <button 
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+      type="submit"
+      [disabled]="registerForm.invalid || inSubmission"
+      >
+        Register
+      </button>       
+    </div>
+  </form>
+</div>

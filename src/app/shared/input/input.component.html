@@ -1,0 +1,38 @@
+<input
+    [formControl]="control"
+    [placeholder]="placeholder"
+    [type]="type"
+    class="block w-full py-1.5 px-3 text-blue-300 border border-blue-950 transition duration-500 focus:outline-none rounded bg-transparent focus:border-blue-800 placeholder-blue-500"
+    [min]="min"
+    [max]="max"
+/>
+
+<ng-container *ngIf="control.touched && control.dirty">
+    <p class="text-red-600" *ngIf="control.errors?.['pattern'] && type == 'password'">
+        Password must be at least 8 characters long, have 1 uppercase letter, 1 lowercase letter and 1 number
+    </p>
+    <p
+        *ngIf="control.errors?.['required']"
+        class="text-red-600"
+    >
+        Field is required
+    </p>
+    <p *ngIf="control.errors?.['noMatch']" class="text-red-600">
+        Passwords do not match.
+    </p>
+    <p *ngIf="control.errors?.['email']" class="text-red-600">
+        Invalid email address.
+    </p>
+    <p *ngIf="control.errors?.['pattern'] && type == 'text'" class="text-red-600">
+        Invalid phone number.
+    </p>
+    <p *ngIf="control.errors?.['minLength']" class="text-red-600">
+        The value is too short.
+    </p>
+    <p *ngIf="control.errors?.['min']" class="text-red-600">
+        The value is too small.
+    </p>
+    <p *ngIf="control.errors?.['max']" class="text-red-600">
+        The value is too big.
+    </p>
+</ng-container>

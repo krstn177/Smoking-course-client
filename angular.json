@@ -56,7 +56,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -68,7 +74,8 @@
               "browserTarget": "Smoking-course-client:build:production"
             },
             "development": {
-              "browserTarget": "Smoking-course-client:build:development"
+              "browserTarget": "Smoking-course-client:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -100,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "dc37b2b6-e14e-43bb-a972-271f9b0d9230"
   }
 }

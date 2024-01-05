@@ -1,0 +1,56 @@
+<div class="max-w-md my-10 mx-auto">
+  <app-alert *ngIf="showAlert" [color]="alertColor">
+      {{  alertMsg  }}
+  </app-alert>
+  <form [formGroup]="videoForm" (submit)="sendVideo()">
+      <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+            Title
+          </label>
+          <app-input
+            [control]="videoForm.controls.Title"
+            placeholder="Enter Title"
+            type="text"
+          ></app-input>
+      </div>
+      <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+            Description
+          </label>
+          <app-input
+            [control]="videoForm.controls.Description"
+            placeholder="Enter Description"
+            type="text"
+          ></app-input>
+      </div>
+      <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+            Image
+          </label>
+          <input
+            class="block w-full py-1.5 px-3 text-blue-300 border border-blue-950 transition duration-500 focus:outline-none rounded bg-transparent focus:border-blue-800 placeholder-blue-500"
+            placeholder="Enter Image"
+            type="file"
+            (change)="onImageUpload($event)"
+          />
+      </div>
+      <div class="mb-6">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="video">
+            Video
+          </label>
+          <input
+            class="block w-full py-1.5 px-3 text-blue-300 border border-blue-950 transition duration-500 focus:outline-none rounded bg-transparent focus:border-blue-800 placeholder-blue-500"
+            placeholder="Enter Video"
+            type="file"
+            (change)="onVideoUpload($event)"
+          />
+      </div>
+      <button 
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:shadow-outline" 
+        type="submit"
+        [disabled]="videoForm.invalid || inSubmission"
+        >
+          Create
+      </button> 
+  </form>
+</div>
