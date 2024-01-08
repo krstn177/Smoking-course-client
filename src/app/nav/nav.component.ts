@@ -12,7 +12,7 @@ export class NavComponent {
   isHiddenMenu = 'hidden'
   isHiddenDoubleDropdown = 'hidden'
 
-  constructor(public authService: AuthService, private router: Router){}
+  constructor(public authService: AuthService, public router: Router){}
 
   async signOut(){
     try{

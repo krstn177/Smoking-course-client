@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VideosListComponent } from './videos-list/videos-list.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 
 
@@ -12,16 +10,12 @@ const routes: Routes = [
     component: VideosListComponent
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
     path: 'video/:id',
     component: VideoPageComponent
+  },
+  {
+    path: 'user',
+    loadChildren: async () => (await import('./user/user.module')).UserModule
   },
   {
     path: 'admin',
