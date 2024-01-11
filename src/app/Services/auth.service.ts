@@ -51,7 +51,7 @@ export class AuthService {
 
   adminPass(): Observable<boolean> {
     this.headerReSetter();
-
+    
     return this.http.get(`${environment.apiUrl}/auth/admin-pass`, { ...this.requestOptions, responseType: 'text' }).pipe(
       map((res: any) => {
         return true;

@@ -24,12 +24,13 @@ export class LoginComponent {
   async login(){
     this.inSubmission = true;
     this.showAlert = true;
+    this.alertMsg = 'Please wait! You are being verified...';
+    this.alertColor = 'blue';
 
     this.authService.login(
       this.credentials
     ).subscribe({
       next: async (token) => {
-        console.log(JSON.parse(token).token);
         await this.authService.setToken(token);
 
         this.inSubmission = false;

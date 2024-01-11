@@ -4,6 +4,7 @@ import videojs from 'video.js';
 import Player from 'video.js/dist/types/player';
 import { VideoService } from '../Services/video.service';
 import IVideo from '../Models/Video.model';
+import { LoaderService } from '../Services/loader.service';
 
 @Component({
   selector: 'app-video-page',
@@ -17,9 +18,10 @@ export class VideoPageComponent implements OnInit {
   @ViewChild('videoPlayer', {static: true}) target?: ElementRef;
   player? : Player;
 
-  constructor(public route: ActivatedRoute, private videoService: VideoService){}
+  constructor(public route: ActivatedRoute, private videoService: VideoService, private loaderService: LoaderService){}
 
   ngOnInit(): void {
+    this.loaderService.showLoader();
     this.player = videojs(this.target?.nativeElement);
 
     this.route.params.subscribe((params: Params) => {
@@ -41,15 +43,18 @@ export class VideoPageComponent implements OnInit {
               src: blobUrl,
               type: 'video/mp4',
             });
+            this.loaderService.hideLoader();
           }, 
           error: (error) => {
             console.error(error);
+            this.loaderService.hideLoader();
           }
         });
-        
+        this.loaderService.hideLoader();
       },
       error: (error) =>{
         console.error(error);
+        this.loaderService.hideLoader();
       }
     });
 
