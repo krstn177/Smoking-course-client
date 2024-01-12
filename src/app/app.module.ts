@@ -12,6 +12,8 @@ import { NavComponent } from './nav/nav.component';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { AdminModule } from './admin/admin.module';
+import { LandingComponent } from './landing/landing.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { AdminModule } from './admin/admin.module';
     VideosListComponent,
     VideoCardComponent,
     NavComponent,
-    VideoPageComponent
+    VideoPageComponent,
+    LandingComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

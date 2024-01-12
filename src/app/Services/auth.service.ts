@@ -62,6 +62,19 @@ export class AuthService {
     );
   }
 
+  activatedPass(): Observable<boolean> {
+    this.headerReSetter();
+    
+    return this.http.get(`${environment.apiUrl}/auth/activated-pass`, { ...this.requestOptions, responseType: 'text' }).pipe(
+      map((res: any) => {
+        return true;
+      }),
+      catchError((err: any) => {
+        return of(false);
+      })
+    );
+  }
+
   async setToken(token: string) {
     const userInfo = JSON.parse(token);
     localStorage.setItem('accessToken', userInfo.token);
