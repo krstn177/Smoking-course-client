@@ -4,7 +4,8 @@ import { VideosListComponent } from './videos-list/videos-list.component';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { LandingComponent } from './landing/landing.component';
 import { activatedGuard } from './Guards/activated.guard';
-import { OrderComponent } from './order/order.component';
+import { OrderComponent } from './orders/order/order.component';
+import { RedeemCodeComponent } from './orders/redeem-code/redeem-code.component';
 
 
 const routes: Routes = [
@@ -18,13 +19,13 @@ const routes: Routes = [
     canActivate: [activatedGuard]
   },
   {
-    path: 'order',
-    component: OrderComponent
-  },
-  {
     path: 'video/:id',
     component: VideoPageComponent,
     canActivate: [activatedGuard]
+  },
+  {
+    path: 'orders',
+    loadChildren: async () => (await import('./orders/orders.module')).OrdersModule
   },
   {
     path: 'user',

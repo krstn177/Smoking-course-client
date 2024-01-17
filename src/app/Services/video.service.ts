@@ -9,9 +9,7 @@ import IVideoDTO from '../Models/VideoDTO.model';
   providedIn: 'root'
 })
 export class VideoService {
-
-  videos : IVideo[] = [];
-
+  
   constructor(private http: HttpClient, private auth: AuthService) {}
   token = this.auth.getToken();
   headerDict = { }

@@ -73,7 +73,7 @@ export class AuthService {
         return of(false);
       })
     );
-  }
+  } 
 
   async setToken(token: string) {
     const userInfo = JSON.parse(token);

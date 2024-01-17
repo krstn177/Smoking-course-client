@@ -1,10 +1,11 @@
 import { EnvironmentInjector, inject, runInInjectionContext } from '@angular/core';
 import { CanActivateFn, Router, UrlTree } from '@angular/router';
-import { AuthService } from '../Services/auth.service';
+
 import { Observable, map } from 'rxjs';
 import { LoaderService } from '../Services/loader.service';
+import { OrderService } from '../Services/order.service';
 
-export const activatedGuard: CanActivateFn = (
+export const orderedGuard: CanActivateFn = (
   route,
   state
   ) : Observable<boolean | UrlTree> 
@@ -14,9 +15,9 @@ export const activatedGuard: CanActivateFn = (
     inject(LoaderService).showLoader();
     const environmentInjector = inject(EnvironmentInjector);
 
-    return inject(AuthService).activatedPass().pipe(
-      map((isActivated: boolean) : boolean | UrlTree => {
-        if (isActivated) {
+    return inject(OrderService).hasOrderedPass().pipe(
+      map((hasntOrdered: boolean) : boolean | UrlTree => {
+        if (hasntOrdered) {
           runInInjectionContext(environmentInjector, () => inject(LoaderService).hideLoader());
           return true;
         } else {

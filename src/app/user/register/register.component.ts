@@ -50,8 +50,9 @@ export class RegisterComponent {
     this.inSubmission = true;
     this.showAlert = true;
     this.authService.register(this.registerForm.value as IUser).subscribe({
-      next: (token) => {
-        this.authService.setToken(token);
+      next: async (token) => {
+        await this.authService.setToken(token);
+        
         this.alertMsg = 'Success! Your account has been created.';
         this.alertColor = 'green';
         this.inSubmission = false;

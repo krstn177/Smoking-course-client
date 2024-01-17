@@ -13,7 +13,7 @@ import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { VideoPageComponent } from './video-page/video-page.component';
 import { AdminModule } from './admin/admin.module';
 import { LandingComponent } from './landing/landing.component';
-import { OrderComponent } from './order/order.component';
+import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,7 @@ import { OrderComponent } from './order/order.component';
     VideoCardComponent,
     NavComponent,
     VideoPageComponent,
-    LandingComponent,
-    OrderComponent
+    LandingComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +30,8 @@ import { OrderComponent } from './order/order.component';
     HttpClientModule,
     UserModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    OrdersModule
   ],
   providers: [
     {
