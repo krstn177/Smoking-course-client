@@ -79,11 +79,13 @@ export class AuthService {
     const userInfo = JSON.parse(token);
     localStorage.setItem('accessToken', userInfo.token);
     localStorage.setItem('role', userInfo.role);
+    localStorage.setItem('hasOrdered', userInfo.hasOrdered);
   }
 
   removeToken() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('role');
+    localStorage.removeItem('hasOrdered');
   }
 
   isLoggedIn() {
