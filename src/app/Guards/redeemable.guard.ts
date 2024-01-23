@@ -14,9 +14,9 @@ export const redeemableGuard: CanActivateFn = (
     inject(LoaderService).showLoader();
     const environmentInjector = inject(EnvironmentInjector);
 
-    return inject(OrderService).hasOrderedPass().pipe(
-      map((hasntOrdered: boolean) : boolean | UrlTree => {
-        if (!hasntOrdered) {
+    return inject(OrderService).canRedeemPass().pipe(
+      map((canRedeem: boolean) : boolean | UrlTree => {
+        if (canRedeem) {
           runInInjectionContext(environmentInjector, () => inject(LoaderService).hideLoader());
           return true;
         } else {

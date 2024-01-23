@@ -88,6 +88,14 @@ export class AuthService {
     localStorage.removeItem('hasOrdered');
   }
 
+  userHasOrdered() {
+    return localStorage.getItem('hasOrdered') == 'true';
+  }
+
+  roleOfUser() {
+    return localStorage.getItem('role');
+  }
+
   isLoggedIn() {
     return localStorage.hasOwnProperty('accessToken');
   }

@@ -63,6 +63,10 @@ export class OrderComponent implements OnInit {
         console.log(res);
         this.successStage = true;
         this.loaderService.hideLoader();
+        this.orderService.setHasOrdered();
+        setTimeout(() => {
+          this.router.navigateByUrl('orders/redeem-code');
+        }, 3000)
       },
       error: (err) => {
         this.loaderService.hideLoader();

@@ -42,6 +42,19 @@ export class OrderService {
     );
   } 
 
+  canRedeemPass(): Observable<boolean> {
+    this.headerSetter();
+    
+    return this.http.get(`${environment.apiUrl}/Orders/can-redeem`, { ...this.requestOptions, responseType: 'text' }).pipe(
+      map((res: any) => {
+        return true;
+      }),
+      catchError((err: any) => {
+        return of(false);
+      })
+    );
+  }
+
   getUserInfo(){
     this.headerSetter();
 
@@ -58,5 +71,9 @@ export class OrderService {
     this.headerSetter();
 
     return this.http.post(`${environment.apiUrl}/Orders/redeem-code`, code, {...this.requestOptions, responseType: 'text'});
+  }
+
+  setHasOrdered() {
+    localStorage.setItem('hasOrdered', 'true');
   }
 }

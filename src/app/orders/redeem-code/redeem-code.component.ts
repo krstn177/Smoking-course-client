@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../../Services/order.service';
 import IOrderCodeDTO from '../../Models/OrderCodeDTO.model';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-redeem-code',
@@ -18,7 +19,7 @@ export class RedeemCodeComponent {
   alertMsg = 'Please wait! You are being verified...';
   alertColor = 'blue';
 
-  constructor(private router: Router, private orderService: OrderService) {}
+  constructor(private router: Router, private orderService: OrderService, private authService: AuthService) {}
 
   redeemCode(){
     this.inSubmission = true;
@@ -31,9 +32,13 @@ export class RedeemCodeComponent {
         console.log(res);
         this.inSubmission = false;
         this.alertColor = 'green';
-        this.alertMsg = 'Success! You successfully activated your account!';
+        this.alertMsg = 'Success! You successfully activated your account! You will be redirected to the login page. Please login again.';
 
-        this.router.navigateByUrl('videos');
+        this.authService.logout();
+
+        setTimeout(() => {
+          this.router.navigateByUrl('user/login');
+        }, 4000)
       },
       error: (err) => {
         console.log(err);
