@@ -6,10 +6,12 @@ describe('VideoPageComponent', () => {
   let component: VideoPageComponent;
   let fixture: ComponentFixture<VideoPageComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [VideoPageComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [VideoPageComponent]
+    })
+    .compileComponents();
+    
     fixture = TestBed.createComponent(VideoPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

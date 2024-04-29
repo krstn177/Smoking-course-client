@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { VideoService } from '../Services/video.service';
-import IVideo from '../Models/Video.model';
-import { LoaderService } from '../Services/loader.service';
+import { VideoService } from '../../Services/video.service';
+import { LoaderService } from '../../Services/loader.service';
+import IVideo from 'src/app/Models/Video.model';
+import IVideoSlim from 'src/app/Models/VideoSlim.model';
 
 @Component({
   selector: 'app-videos-list',
@@ -9,7 +10,7 @@ import { LoaderService } from '../Services/loader.service';
   styleUrls: ['./videos-list.component.scss']
 })
 export class VideosListComponent implements OnInit {
-  videos? : IVideo []
+  videos? : IVideoSlim[]
 
   constructor(private videoService: VideoService, private loaderService: LoaderService) {}
 
@@ -18,7 +19,7 @@ export class VideosListComponent implements OnInit {
     this.videoService.getList().subscribe({
       next: (videos) =>{
         this.videos = videos;
-        console.log(videos);
+        console.log(videos)
         this.loaderService.hideLoader();
       },
       error: (error) =>{

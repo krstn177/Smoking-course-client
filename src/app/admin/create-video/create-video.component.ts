@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import IVideoDTO from 'src/app/Models/VideoDTO.model';
+import IVideoCreate from 'src/app/Models/VideoCreate.model';
 import { VideoService } from 'src/app/Services/video.service';
 
 @Component({
@@ -18,62 +18,59 @@ export class CreateVideoComponent {
   constructor(private videoService: VideoService, private router: Router) {}
 
   videoForm = new FormGroup({
-    Title: new FormControl('',{
+    title: new FormControl('',{
+      validators: [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(40)
+      ]
+    }),
+    description: new FormControl('',{
+      validators: [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(200)
+      ]
+    }),
+    videoUrl: new FormControl('',{
       validators: [
         Validators.required,
         Validators.minLength(3)
       ]
     }),
-    Description: new FormControl('',{
+    screenshotUrl: new FormControl('',{
       validators: [
         Validators.required,
-        Validators.minLength(6)
+        Validators.minLength(3)
       ]
     }),
-    Video: new FormControl<File | null>(null, {
-      validators:[
-        Validators.required
+    previous: new FormControl('',{
+      validators: [
+        Validators.minLength(3)
       ]
     }),
-    VideoScreenshot: new FormControl<File | null>(null, {
-      validators:[
-        Validators.required
+    next: new FormControl('',{
+      validators: [
+        Validators.minLength(3)
       ]
     }),
   })
-
-  onImageUpload($event: Event) {
-    const imageFile = ($event.target as HTMLInputElement).files?.item(0) ?? null;
-    if (!imageFile || (imageFile.type !== 'image/png' && imageFile.type !== 'image/jpeg')) {
-      return;
-    }
-    console.log(this.videoForm);
-    this.videoForm.patchValue({VideoScreenshot: imageFile});
-  }
-
-  onVideoUpload($event: Event) {
-    const videoFile = ($event.target as HTMLInputElement).files?.item(0) ?? null;
-    if (!videoFile || videoFile.type !== 'video/mp4') {
-      return;
-    }
-    console.log(this.videoForm);
-    this.videoForm.patchValue({Video: videoFile});
-  }
 
   sendVideo(){
     this.inSubmission = true;
     this.showAlert = true;
 
     console.log(this.videoForm);
-    this.videoService.createVideo(this.videoForm.value as IVideoDTO).subscribe({
+    this.videoService.createVideo(this.videoForm.value as IVideoCreate).subscribe({
       next: (res) => {
         console.log(res);
+        const { _id } = JSON.parse(res);
         this.alertColor = "green";
         this.alertMsg = "Is all good";
         this.inSubmission = false;
 
         setTimeout(() => {
-          this.router.navigateByUrl(`video/${res}`);
+          this.router.navigateByUrl(`videos/${_id}`);
         }, 2000)
       },
       error: (err) => {

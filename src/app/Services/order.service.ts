@@ -22,7 +22,7 @@ export class OrderService {
     this.token = this.auth.getToken();
     this.headerDict = {
       'Content-Type': 'application/json',
-      'Authorization': this.token
+      'X-Authorization': this.token
     }
     this.requestOptions = { 
       headers: new HttpHeaders(this.headerDict)
@@ -32,7 +32,7 @@ export class OrderService {
   hasOrderedPass(): Observable<boolean> {
     this.headerSetter();
     
-    return this.http.get(`${environment.apiUrl}/Orders/has-ordered`, { ...this.requestOptions, responseType: 'text' }).pipe(
+    return this.http.get(`${environment.apiUrl}/orders/has-ordered`, { ...this.requestOptions }).pipe(
       map((res: any) => {
         return true;
       }),
@@ -42,21 +42,29 @@ export class OrderService {
     );
   } 
 
+  setHasOrdered(){
+    localStorage.setItem('hasOrdered', 'true');
+  }
+
+  setActivatedRole(){
+    localStorage.setItem('role', 'acrivated');
+  }
+
   getUserInfo(){
     this.headerSetter();
 
-    return this.http.get(`${environment.apiUrl}/Orders/user`, {...this.requestOptions, responseType: 'json'});
+    return this.http.get(`${environment.apiUrl}/auth/user-info`, {...this.requestOptions, responseType: 'json'});
   }
 
   makeOrder(order: IOrderDTO){
     this.headerSetter();
 
-    return this.http.post(`${environment.apiUrl}/Orders/make-order`, order, {...this.requestOptions, responseType: 'text'});
+    return this.http.post(`${environment.apiUrl}/orders/create`, order, {...this.requestOptions });
   }
 
   redeemCode(code: IOrderCodeDTO){
     this.headerSetter();
 
-    return this.http.post(`${environment.apiUrl}/Orders/redeem-code`, code, {...this.requestOptions, responseType: 'text'});
+    return this.http.post(`${environment.apiUrl}/orders/activate`, code, {...this.requestOptions });
   }
 }

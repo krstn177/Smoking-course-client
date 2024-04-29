@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VideosListComponent } from './videos-list/videos-list.component';
-import { VideoPageComponent } from './video-page/video-page.component';
 import { LandingComponent } from './landing/landing.component';
-import { activatedGuard } from './Guards/activated.guard';
-import { OrderComponent } from './orders/order/order.component';
-import { RedeemCodeComponent } from './orders/redeem-code/redeem-code.component';
-
 
 const routes: Routes = [
   {
@@ -15,13 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'videos',
-    component: VideosListComponent,
-    canActivate: [activatedGuard]
-  },
-  {
-    path: 'video/:id',
-    component: VideoPageComponent,
-    canActivate: [activatedGuard]
+    loadChildren: async () => (await import('./videos/videos.module')).VideosModule
   },
   {
     path: 'orders',

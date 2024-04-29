@@ -1,0 +1,13 @@
+
+<div [routerLink]="['/videos', videoInfo?._id]" class="group cursor-pointer mx-4 min-w-[200px] overflow-hidden rounded-2xl text-center bg-darker-green shadow-xl duration-200 hover:-translate-y-4">
+  <div class="flex h-60 flex-col justify-between overflow-hidden">
+    <img [src]="videoInfo?.screenshotUrl" crossorigin [alt]="videoInfo?.title" class="group-hover:scale-110 h-full w-full object-cover duration-200" />
+  </div>
+  <div class="flex-1 overflow-hidden bg-darker-green px-6 py-8">
+    <h5 class="group-hover:text-lighter-green text-darker-blue mb-4 text-xl font-bold">{{videoInfo?.title}}</h5>
+    <p class="mb-4 text-beige">{{videoInfo?.description}}</p>
+    <div class="max-w-full flex-none lg:px-4">
+      <h5 class="text-lg group-hover:text-lighter-green text-darker-blue font-bold">Insert watched here</h5>
+    </div>
+  </div>
+</div>

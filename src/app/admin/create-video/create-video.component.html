@@ -1,56 +1,77 @@
-<div class="max-w-md my-10 mx-auto">
-  <app-alert *ngIf="showAlert" [color]="alertColor">
+<div class="w-full min-h-[110vh] py-16 bg-beige ">
+  <div class="max-w-md my-10 mx-auto">
+    <app-alert *ngIf="showAlert" [color]="alertColor">
       {{  alertMsg  }}
-  </app-alert>
-  <form [formGroup]="videoForm" (submit)="sendVideo()">
+    </app-alert>
+    <form [formGroup]="videoForm" class="bg-lighter-green shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4" (submit)="sendVideo()">
       <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
-            Title
-          </label>
-          <app-input
-            [control]="videoForm.controls.Title"
-            placeholder="Enter Title"
-            type="text"
-          ></app-input>
+        <label class="block text-darker-green text-sm font-bold mb-2" for="title">
+          Title
+        </label>
+        <app-input
+        [control]="videoForm.controls.title"
+        placeholder="Enter Title"
+        type="text"
+        ></app-input>
       </div>
       <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+          <label class="block text-darker-green text-sm font-bold mb-2" for="description">
             Description
           </label>
           <app-input
-            [control]="videoForm.controls.Description"
-            placeholder="Enter Description"
-            type="text"
+          [control]="videoForm.controls.description"
+          placeholder="Enter Description"
+          type="text"
           ></app-input>
-      </div>
-      <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
-            Image
+        </div>
+        <div class="mb-6">
+          <label class="block text-darker-green text-sm font-bold mb-2" for="videoUrl">
+            Video Url
           </label>
-          <input
-            class="block w-full py-1.5 px-3 text-blue-300 border border-blue-950 transition duration-500 focus:outline-none rounded bg-transparent focus:border-blue-800 placeholder-blue-500"
-            placeholder="Enter Image"
-            type="file"
-            (change)="onImageUpload($event)"
-          />
-      </div>
-      <div class="mb-6">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="video">
-            Video
+          <app-input
+          [control]="videoForm.controls.videoUrl"
+          placeholder="Enter Video URL"
+          type="text"
+          ></app-input>
+        </div>
+        <div class="mb-6">
+          <label class="block text-darker-green text-sm font-bold mb-2" for="screenshotUrl">
+          Screenshot Url
+        </label>
+        <app-input
+        [control]="videoForm.controls.screenshotUrl"
+        placeholder="Enter Screenshot URL"
+        type="text"
+        ></app-input>
+        </div>
+        <div class="mb-6">
+          <label class="block text-darker-green text-sm font-bold mb-2" for="previous">
+          Previous video URL
           </label>
-          <input
-            class="block w-full py-1.5 px-3 text-blue-300 border border-blue-950 transition duration-500 focus:outline-none rounded bg-transparent focus:border-blue-800 placeholder-blue-500"
-            placeholder="Enter Video"
-            type="file"
-            (change)="onVideoUpload($event)"
-          />
-      </div>
+        <app-input
+        [control]="videoForm.controls.previous"
+        placeholder="Enter Previous Video URL"
+        type="text"
+        ></app-input>
+        </div>
+        <div class="mb-6">
+          <label class="block text-darker-green text-sm font-bold mb-2" for="next">
+          Next video URL
+          </label>
+        <app-input
+        [control]="videoForm.controls.next"
+        placeholder="Enter Next Video URL"
+        type="text"
+        ></app-input>
+        </div>
       <button 
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer focus:outline-none focus:shadow-outline" 
-        type="submit"
+      class="bg-darker-green hover:bg-beige text-darker-blue font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" 
+      type="submit"
         [disabled]="videoForm.invalid || inSubmission"
         >
           Create
       </button> 
-  </form>
+    </form>
+  </div>
+  
 </div>

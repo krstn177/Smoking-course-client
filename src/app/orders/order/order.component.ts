@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
   orderForm = new FormGroup({
     city: new FormControl('', [
       Validators.required,
-      Validators.minLength(2),
+      Validators.minLength(3),
       Validators.maxLength(100)
     ]),
     address: new FormControl('', [
@@ -61,6 +61,7 @@ export class OrderComponent implements OnInit {
     this.orderService.makeOrder(this.orderInfo as IOrderDTO).subscribe({
       next: (res) => {
         console.log(res);
+        this.orderService.setHasOrdered();
         this.successStage = true;
         this.loaderService.hideLoader();
       },

@@ -19,7 +19,11 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router ){}
 
   registerForm = new FormGroup({
-    name: new FormControl('',[
+    firstName: new FormControl('',[
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    lastName: new FormControl('',[
       Validators.required,
       Validators.minLength(3)
     ]),
@@ -66,12 +70,7 @@ export class RegisterComponent {
         console.error(err);
         console.error(err.error);
 
-        if (err.Reason == "EmailExists") {
-          this.alertMsg = "Email already exists."
-        }
-        else{
-          this.alertMsg = 'An unexpected error occured. Please try again later';
-        }
+        this.alertMsg = 'An unexpected error occured. Please try again later';
 
         this.alertColor = 'red';
         return;

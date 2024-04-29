@@ -13,7 +13,7 @@ export class AuthService {
   token = this.getToken();
   headerDict = {
     'Content-Type': 'application/json',
-    'Authorization': this.token
+    'X-Authorization': this.token
   }
 
   requestOptions = {
@@ -24,7 +24,7 @@ export class AuthService {
     this.token = this.getToken();
     this.headerDict = {
       'Content-Type': 'application/json',
-      'Authorization': this.token
+      'X-Authorization': this.token
     }
     this.requestOptions = { 
       headers: new HttpHeaders(this.headerDict)
@@ -47,6 +47,10 @@ export class AuthService {
       } else{
           return '';
       }
+  }
+
+  getHasOrdered(){
+    return localStorage.getItem('hasOrdered');
   }
 
   adminPass(): Observable<boolean> {
@@ -73,19 +77,49 @@ export class AuthService {
         return of(false);
       })
     );
-  } 
+  }
+  
+  userPass(): Observable<boolean> {
+    this.headerReSetter();
+    
+    return this.http.get(`${environment.apiUrl}/auth/user-pass`, { ...this.requestOptions, responseType: 'text' }).pipe(
+      map((res: any) => {
+        return true;
+      }),
+      catchError((err: any) => {
+        return of(false);
+      })
+    );
+  }
+
+  irregularUserPass(): Observable<boolean> {
+    this.headerReSetter();
+    
+    return this.http.get(`${environment.apiUrl}/auth/irregular-user-pass`, { ...this.requestOptions, responseType: 'text' }).pipe(
+      map((res: any) => {
+        return true;
+      }),
+      catchError((err: any) => {
+        return of(false);
+      })
+    );
+  }
 
   async setToken(token: string) {
     const userInfo = JSON.parse(token);
-    localStorage.setItem('accessToken', userInfo.token);
+    localStorage.setItem('accessToken', userInfo.accessToken);
     localStorage.setItem('role', userInfo.role);
     localStorage.setItem('hasOrdered', userInfo.hasOrdered);
+    localStorage.setItem('watched', userInfo.watched);
+    localStorage.setItem('favourites', userInfo.favourites);
   }
 
   removeToken() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('role');
     localStorage.removeItem('hasOrdered');
+    localStorage.removeItem('watched');
+    localStorage.removeItem('favourites');
   }
 
   isLoggedIn() {
@@ -100,13 +134,10 @@ export class AuthService {
     return this.http.post(`${environment.apiUrl}/auth/register`, payload, {responseType: 'text'});
   }
 
-  registerAdmin(payload: Object){
-    this.headerReSetter();
-    return this.http.post(`${environment.apiUrl}/auth/register-admin`, payload, {...this.requestOptions, responseType: 'text'});
-  }
-
   logout(){
-    this.http.get<any>(`${environment.apiUrl}/auth/logout`, this.requestOptions);
+    this.headerReSetter();
+
     this.removeToken();
+    return this.http.get(`${environment.apiUrl}/auth/logout`, this.requestOptions);
   }
 }

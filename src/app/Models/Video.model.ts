@@ -1,9 +1,11 @@
+import IVideoSlim from "./VideoSlim.model";
+
 export default interface IVideo{
-    id: string;
+    _id: string;
     title: string;
     description: string;
-    fileUrl: string;
-    fileName: string;
-    screenshotFileUrl: string;
-    screenshotFileName: string;
+    videoUrl: string;
+    screenshotUrl: string;
+    previous?: IVideoSlim;
+    next?: IVideoSlim;
 }

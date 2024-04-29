@@ -16,8 +16,8 @@ export const orderedGuard: CanActivateFn = (
     const environmentInjector = inject(EnvironmentInjector);
 
     return inject(OrderService).hasOrderedPass().pipe(
-      map((hasntOrdered: boolean) : boolean | UrlTree => {
-        if (hasntOrdered) {
+      map((hasOrdered: boolean) : boolean | UrlTree => {
+        if (!hasOrdered) {
           runInInjectionContext(environmentInjector, () => inject(LoaderService).hideLoader());
           return true;
         } else {

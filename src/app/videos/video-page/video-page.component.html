@@ -1,0 +1,31 @@
+<div class="bg-beige w-full py-16 min-h-screen xl:px-8 px-4">
+    <div class="gap-5 flex lg:flex-row flex-col lg:m-0 sm:mx-5 align-middle lg:justify-center">
+        <div class="lg:w-10/12 w-full">
+            <div class="md:max-w-7xl md:h-[70vh] w-full rounded-xl bg-darker-green">
+                Yo
+            </div>
+            <h1 class="text-darker-blue text-2xl w-4/5 mx-auto my-5 font-extrabold">{{videoDataObj?.title}}</h1>
+            <div class="bg-lighter-green rounded w-4/5 mx-auto my-5">
+                <p>{{videoDataObj?.description}}</p>
+            </div>
+        </div>
+        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 lg:h-[75vh] rounded-xl bg-darker-green">
+            <h2 class="text-beige text-lg font-bold text-center mb-4">Previous:</h2>
+            <div [routerLink]="['/videos', previousVideo?._id]" class="mx-auto cursor-pointer rounded-xl bg-darker-blue h-[30vh] md:h-[40vh] w-5/6 lg:h-2/5 overflow-hidden duration-200 hover:-translate-y-4">
+                <div class="w-full h-2/3 flex flex-col justify-between overflow-hidden">
+                    <img [src]="previousVideo?.screenshotUrl" crossorigin [alt]="previousVideo?.title" class="h-full w-full object-cover" />
+                </div>
+                <p class="text-lighter-green text-lg max-h-24 font-bold text-center text-ellipsis overflow-hidden">{{previousVideo?.title}}</p>
+                <p class="text-green-600 h-6 text-base text-center text-ellipsis">Is Watched</p>
+            </div>
+            <h2 class="text-beige text-lg font-bold text-center mb-4">Next:</h2>
+            <div [routerLink]="['/videos', nextVideo?._id]" class="mx-auto cursor-pointer rounded-xl bg-darker-blue h-[30vh] md:h-[40vh] w-5/6 lg:h-2/5 overflow-hidden duration-200 hover:-translate-y-4">
+                <div class="w-full h-2/3 flex flex-col justify-between overflow-hidden">
+                    <img [src]="nextVideo?.screenshotUrl" crossorigin [alt]="nextVideo?.title" class="h-full w-full object-cover duration-200" />
+                </div>
+                <p class="text-lighter-green text-lg max-h-24 font-bold text-center text-ellipsis overflow-hidden">{{nextVideo?.title}}</p>
+                <p class="text-yellow-400 h-6 text-sm text-center">Is Watched</p>
+            </div>
+        </div>
+    </div>
+</div>

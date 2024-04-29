@@ -1,67 +1,52 @@
-<nav class="bg-white border-gray-200 dark:bg-gray-500 dark:border-gray-700">
+<nav class="bg-lighter-green h-[10vh]">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="assets/tledticssufv1kjov6bd0ek10d.png" class="h-8" alt="Smoking Course Logo" />
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Smoking Course</span>
+          <span class="self-center text-2xl font-semibold text-darker-blue whitespace-nowrap">Smoking Course</span>
       </a>
-      <button (click)="toggleMenu()" data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
+      <button (click)="toggleMenu()" data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center bg-darker-green text-sm text-darker-blue rounded-lg md:hidden hover:bg-lighter-green focus:outline-none focus:ring-2 focus:ring-beige" aria-controls="navbar-multi-level" aria-expanded="false">
+          <span class="text-darker-blue sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
       </button>
       <div [ngClass]="isHiddenMenu" class="w-full md:block md:w-auto" id="navbar-multi-level">
-        <ul class="flex flex-col font-medium py-3 px-8 md:py-2 md:px-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-700 dark:border-gray-700">
+        <ul class="flex flex-col font-medium py-3 px-8 md:py-2 md:px-4 mt-4 border rounded-xl text-darker-blue bg-darker-green md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li>
-            <a routerLink="/" [ngClass]="{'text-blue-700': this.router.url == '/'}" class="block py-2 px-3 font-bold text-white rounded md:bg-transparent md:p-0 md:dark:bg-transparent" aria-current="page">Home</a>
+            <a routerLink="/" [ngClass]="{'text-beige': this.router.url == '/'}" class="block py-2 px-3 font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Home</a>
           </li>
-          <li>
-            <a routerLink="/orders/make-order" [ngClass]="{'text-blue-700': this.router.url == '/order'}" class="block py-2 px-3 font-bold text-white rounded md:bg-transparent md:p-0 md:dark:bg-transparent" aria-current="page">Order Course</a>
+          <li *ngIf="this.authService.getHasOrdered() == 'false' && this.authService.getRole() == 'user'">
+            <a routerLink="/orders/make-order" [ngClass]="{'text-beige': this.router.url == '/orders/make-order'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Order Course</a>
           </li>
-          <li>
-              <button (click)="toggleDropdown()" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex font-bold items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Dropdown 
+          <li *ngIf="this.authService.getHasOrdered() == 'true' && this.authService.getRole() == 'user'">
+            <a routerLink="/orders/redeem-code" class="block py-2 px-3 font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Redeem Code</a>
+          </li>
+          <li *ngIf="this.authService.isLoggedIn() && this.authService.getRole() !== 'user'">
+            <a routerLink="/videos" [ngClass]="{'text-beige': this.router.url == '/videos'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Dashboard</a>
+          </li>
+          <li *ngIf="this.authService.getRole() == 'admin'">
+              <button (click)="toggleDropdown()" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex font-bold items-center justify-between w-full py-2 px-3  hover:bg-darker-green md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0 md:w-auto">ADMIN 
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
               </button>
               <!-- Dropdown menu -->
-              <div id="dropdownNavbar" [ngClass]="isHiddenDropdown" class="z-10 absolute font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
+              <div id="dropdownNavbar" [ngClass]="isHiddenDropdown" class="z-10 absolute font-normal bg-darker-green divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                  <ul class="py-2 text-sm text-darker-blue" aria-labelledby="dropdownLargeButton">
                     <li>
-                      <a routerLink="videos" class="block px-4 font-bold py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
-                    </li>
-                    
-                    <li *ngIf="this.authService.getRole() == 'admin'" aria-labelledby="dropdownNavbarLink">
-                      <button (click)="toggleDoubleDropdown()" id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                        Dropdown
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                        </svg>
-                      </button>
-                      <div id="doubleDropdown" [ngClass]="isHiddenDoubleDropdown" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
-                            <li>
-                              <a routerLink="admin/create-video" [ngClass]="{'text-blue-700': this.router.url == 'admin/create-video'}" class="block font-bold px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Create</a>
-                            </li>
-                            <li>
-                              <a routerLink="admin/register-admin" [ngClass]="{'text-blue-700': this.router.url == 'admin/register-admin'}" class="block font-bold px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Register Admin</a>
-                            </li>
-                          </ul>
-                      </div>
+                      <a routerLink="admin/create-video" [ngClass]="{'text-beige': this.router.url == '/admin/create-video'}" class="block font-bold  px-4 py-2 hover:text-beige">Create</a>
                     </li>
                   </ul>
-                  
               </div>
           </li>
           <li *ngIf="!this.authService.isLoggedIn()">
-            <ul class="flex flex-row gap-5">
-              <li>
-                <a routerLink="/user/login" [ngClass]="{'text-blue-700': this.router.url == '/user/login'}" class="block font-bold py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Login</a>
-              </li>
-              <li>
-                <a routerLink="/user/register" [ngClass]="{'text-blue-700': this.router.url == '/user/register'}" class="block font-bold py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Register</a>
-              </li>
-            </ul>
+            <a routerLink="/user/login" [ngClass]="{'text-beige': this.router.url == '/user/login'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Login</a>
+          </li>
+          <li *ngIf="!this.authService.isLoggedIn()">
+            <a routerLink="/user/register" [ngClass]="{'text-beige': this.router.url == '/user/register'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Register</a>
           </li>
           <li *ngIf="this.authService.isLoggedIn()">
-            <a (click)="signOut()" class="block cursor-pointer font-bold py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Log Out</a>
+            <a (click)="signOut()" class="block cursor-pointer font-bold py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0">Log Out</a>
           </li>
         </ul>
       </div>

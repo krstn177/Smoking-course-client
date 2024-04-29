@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import IVideo from '../Models/Video.model';
+import IVideoSlim from 'src/app/Models/VideoSlim.model';
 
 @Component({
   selector: 'app-video-card',
@@ -8,11 +8,8 @@ import IVideo from '../Models/Video.model';
 })
 
 export class VideoCardComponent implements OnInit {
-  @Input() videoInfo?: IVideo
+  @Input() videoInfo?: IVideoSlim
   
   ngOnInit(): void {
-    console.log(this.videoInfo?.id);
-    console.log(this.videoInfo?.screenshotFileName);
-    console.log(this.videoInfo?.screenshotFileUrl);
   }
 }

@@ -29,6 +29,7 @@ export class RedeemCodeComponent {
     this.orderService.redeemCode(this.codeObject as IOrderCodeDTO).subscribe({
       next: (res) => {
         console.log(res);
+        this.orderService.setActivatedRole();
         this.inSubmission = false;
         this.alertColor = 'green';
         this.alertMsg = 'Success! You successfully activated your account!';

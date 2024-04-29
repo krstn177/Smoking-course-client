@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import IVideo from '../Models/Video.model';
 import { AuthService } from './auth.service';
-import IVideoDTO from '../Models/VideoDTO.model';
+import IVideoCreate from '../Models/VideoCreate.model';
+import IVideoSlim from '../Models/VideoSlim.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,59 +21,27 @@ export class VideoService {
     this.token = this.auth.getToken();
     this.headerDict = {
       'Content-Type': 'application/json',
-      'Authorization': this.token
+      'X-Authorization': this.token
     }
     this.requestOptions = { 
       headers: new HttpHeaders(this.headerDict)
-    }
-  }
-
-  headerSetterUpload(){
-    this.token = this.auth.getToken();
-    this.headerDict = {
-      'Authorization': this.token
-    }
-    this.requestOptions = { 
-      headers: new HttpHeaders(this.headerDict)
-    }
-  }
-
-  headerSetterDownload(){
-    this.headerDict = {
-      'Content-Type': 'video/mp4',
-      'Authorization': this.token
-    }
-    this.requestOptions = {
-      headers: new HttpHeaders(this.headerDict),
     }
   }
 
   getList(){
     this.headerSetter();
-    return this.http.get<IVideo[]>(`${environment.apiUrl}/Video/list`, this.requestOptions);
+    return this.http.get<IVideoSlim[]>(`${environment.apiUrl}/videos/all`, this.requestOptions);
   }
-
-  downloadVideo(fileName: string){
-    this.headerSetterDownload();
-    return this.http.get(`${environment.apiUrl}/Video/get-video/${fileName}`, {...this.requestOptions, responseType: 'blob'});
-  } 
 
   getVideoInfo(id: string){
     this.headerSetter();
-    return this.http.get<IVideo>(`${environment.apiUrl}/Video/${id}`, {...this.requestOptions, responseType: 'json'});
+    return this.http.get<IVideo>(`${environment.apiUrl}/videos/${id}`, {...this.requestOptions, responseType: 'json'});
   }
 
-  createVideo(video: IVideoDTO){
-    this.headerSetterUpload();
+  createVideo(video: IVideoCreate){
+    this.headerSetter();
 
-    const formData: FormData = new FormData();
-    formData.append('Title', video.Title);
-    formData.append('Description', video.Description);
-    formData.append('Video', video.Video, video.Video.name);
-    formData.append('VideoScreenshot', video.VideoScreenshot, video.VideoScreenshot.name);
-
-    console.log(formData);
-    return this.http.post(`${environment.apiUrl}/Video/create`, formData, {...this.requestOptions, responseType: 'text'});
+    console.log(video);
+    return this.http.post(`${environment.apiUrl}/videos/create`, video, {...this.requestOptions, responseType: 'text'});
   }
-
 }
