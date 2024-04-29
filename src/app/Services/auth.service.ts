@@ -122,6 +122,14 @@ export class AuthService {
     localStorage.removeItem('favourites');
   }
 
+  userHasOrdered() {
+    return localStorage.getItem('hasOrdered') == 'true';
+  }
+
+  roleOfUser() {
+    return localStorage.getItem('role');
+  }
+
   isLoggedIn() {
     return localStorage.hasOwnProperty('accessToken');
   }

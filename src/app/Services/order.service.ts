@@ -67,4 +67,5 @@ export class OrderService {
 
     return this.http.post(`${environment.apiUrl}/orders/activate`, code, {...this.requestOptions });
   }
+
 }
