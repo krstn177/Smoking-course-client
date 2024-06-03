@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import IUser from 'src/app/Models/User.model';
+import IRegisterUser from 'src/app/Models/RegisterUser.model';
 import { AuthService } from 'src/app/Services/auth.service';
 import { RegisterValidators } from 'src/app/Validators/register-validators';
 
@@ -50,12 +50,13 @@ export class RegisterComponent {
     ])
   }, [RegisterValidators.match('password', 'confirm_password')])
 
-  async register(){
+  register(){
     this.inSubmission = true;
     this.showAlert = true;
-    this.authService.register(this.registerForm.value as IUser).subscribe({
-      next: async (token) => {
-        await this.authService.setToken(token);
+    this.authService.register(this.registerForm.value as IRegisterUser).subscribe({
+      next: (res) => {
+        this.authService.setAuthInfoInLocalStorage(res.accessToken, res.watched, res.favourites);
+        this.authService.setAccessToken(res.accessToken);
         
         this.alertMsg = 'Success! Your account has been created.';
         this.alertColor = 'green';

@@ -1,19 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { Router } from '@angular/router';
 import { LoaderService } from '../Services/loader.service';
+import IUser from '../Models/User.model';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   isHiddenDropdown = 'hidden'
   isHiddenMenu = 'hidden'
   isHiddenDoubleDropdown = 'hidden'
 
+  user: IUser | null = null;
+
   constructor(public authService: AuthService, public router: Router, public loaderService: LoaderService){}
+  
+  ngOnInit(): void {
+    this.authService.user$.subscribe(user => {
+      this.user = user;
+    })
+  }
 
   signOut(){
     this.loaderService.showLoader();

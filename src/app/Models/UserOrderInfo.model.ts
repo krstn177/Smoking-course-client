@@ -1,4 +1,4 @@
-export default interface IUserInfo{
+export default interface IUserOrderInfo{
     id: string;
     name: string;
     email: string;

@@ -1,8 +1,6 @@
-export default interface IUser{
+export default interface IUser {
+    _id: string;
     email: string;
-    password: string;
-    age: number;
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
+    roles: string[];
+    hasOrdered: boolean;
 }

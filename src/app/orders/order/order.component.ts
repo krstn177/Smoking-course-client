@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../../Services/order.service';
-import IUserInfo from '../../Models/UserInfo.model';
+import IUserOrderInfo from '../../Models/UserOrderInfo.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import IOrderDTO from '../../Models/OrderDTO.model';
 import { LoaderService } from '../../Services/loader.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-order',
@@ -14,17 +15,17 @@ import { LoaderService } from '../../Services/loader.service';
 export class OrderComponent implements OnInit {
   reviewStage: boolean = false;
   successStage: boolean = false;
-  userInfo : IUserInfo | null = null;
+  userInfo : IUserOrderInfo | null = null;
   orderInfo: IOrderDTO | null = null;
 
-  constructor(private router: Router, private orderService: OrderService, private loaderService: LoaderService) { }
+  constructor(private router: Router, private orderService: OrderService, private authService: AuthService, private loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.loaderService.showLoader();
     this.orderService.getUserInfo().subscribe({
       next: (user) => {
         console.log(user);
-        this.userInfo = user as IUserInfo;
+        this.userInfo = user as IUserOrderInfo;
         this.loaderService.hideLoader();
       },
       error: (err) => {
@@ -61,10 +62,18 @@ export class OrderComponent implements OnInit {
     this.orderService.makeOrder(this.orderInfo as IOrderDTO).subscribe({
       next: (res) => {
         console.log(res);
-        this.orderService.setHasOrdered();
+
+        this.authService.refreshAccessToken().subscribe({
+          next: (response: any) => {
+            this.authService.setAuthInfoInLocalStorage(response.accessToken, undefined, undefined);
+          },
+          error: (err) => {
+            throw new Error(err);
+          }
+        });
+        
         this.successStage = true;
         this.loaderService.hideLoader();
-        this.orderService.setHasOrdered();
         setTimeout(() => {
           this.router.navigateByUrl('orders/redeem-code');
         }, 3000)

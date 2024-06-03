@@ -12,16 +12,16 @@ import IVideoSlim from '../Models/VideoSlim.model';
 export class VideoService {
   
   constructor(private http: HttpClient, private auth: AuthService) {}
-  token = this.auth.getToken();
+  token = this.auth.getAccessToken();
   headerDict = { }
 
   requestOptions = { }
 
   headerSetter() {
-    this.token = this.auth.getToken();
+    this.token = this.auth.getAccessToken();
     this.headerDict = {
       'Content-Type': 'application/json',
-      'X-Authorization': this.token
+      'Authorization': `Bearer ${this.token}`
     }
     this.requestOptions = { 
       headers: new HttpHeaders(this.headerDict)

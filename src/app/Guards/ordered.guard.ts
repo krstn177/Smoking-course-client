@@ -1,29 +1,23 @@
-import { EnvironmentInjector, inject, runInInjectionContext } from '@angular/core';
-import { CanActivateFn, Router, UrlTree } from '@angular/router';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { AuthService } from '../Services/auth.service';
 
-import { Observable, map } from 'rxjs';
-import { LoaderService } from '../Services/loader.service';
-import { OrderService } from '../Services/order.service';
+export const orderedGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
+  const user = authService.getUserInfo();
 
-export const orderedGuard: CanActivateFn = (
-  route,
-  state
-  ) : Observable<boolean | UrlTree> 
-  | Promise<boolean | UrlTree> 
-  | boolean 
-  | UrlTree => {
-    inject(LoaderService).showLoader();
-    const environmentInjector = inject(EnvironmentInjector);
+  if (user === null) {
+    router.navigate(['/user/login']);
+    return false;
+  }
 
-    return inject(OrderService).hasOrderedPass().pipe(
-      map((hasOrdered: boolean) : boolean | UrlTree => {
-        if (!hasOrdered) {
-          runInInjectionContext(environmentInjector, () => inject(LoaderService).hideLoader());
-          return true;
-        } else {
-          runInInjectionContext(environmentInjector, () => inject(LoaderService).hideLoader());
-          return runInInjectionContext(environmentInjector, () => inject(Router).createUrlTree(['/']));
-        }
-      })
-    );
+  const userHasOrdered = user.hasOrdered;
+  const requiredOrderState = route.data['orderState'] as Boolean;
+  if (userHasOrdered == requiredOrderState) {
+    return true;
+  } else {
+    router.navigate(['/']);
+    return false;
+  }
 };

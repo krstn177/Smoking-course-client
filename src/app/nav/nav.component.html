@@ -15,16 +15,16 @@
           <li>
             <a routerLink="/" [ngClass]="{'text-beige': this.router.url == '/'}" class="block py-2 px-3 font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Home</a>
           </li>
-          <li *ngIf="this.authService.getHasOrdered() == 'false' && this.authService.getRole() == 'user'">
+          <li *ngIf="user && user.hasOrdered == false && (!user.roles.includes('activated') && !user.roles.includes('admin'))">
             <a routerLink="/orders/make-order" [ngClass]="{'text-beige': this.router.url == '/orders/make-order'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Order Course</a>
           </li>
-          <li *ngIf="this.authService.getHasOrdered() == 'true' && this.authService.getRole() == 'user'">
+          <li *ngIf="user && user.hasOrdered == true && (!user.roles.includes('activated') && !user.roles.includes('admin'))">
             <a routerLink="/orders/redeem-code" class="block py-2 px-3 font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Redeem Code</a>
           </li>
-          <li *ngIf="this.authService.isLoggedIn() && this.authService.getRole() !== 'user'">
+          <li *ngIf="user && (user.roles.includes('activated') || user.roles.includes('admin'))">
             <a routerLink="/videos" [ngClass]="{'text-beige': this.router.url == '/videos'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Dashboard</a>
           </li>
-          <li *ngIf="this.authService.getRole() == 'admin'">
+          <li *ngIf="user && user.roles.includes('admin')">
               <button (click)="toggleDropdown()" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex font-bold items-center justify-between w-full py-2 px-3  hover:bg-darker-green md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0 md:w-auto">ADMIN 
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
@@ -39,13 +39,13 @@
                   </ul>
               </div>
           </li>
-          <li *ngIf="!this.authService.isLoggedIn()">
+          <li *ngIf="!user">
             <a routerLink="/user/login" [ngClass]="{'text-beige': this.router.url == '/user/login'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Login</a>
           </li>
-          <li *ngIf="!this.authService.isLoggedIn()">
+          <li *ngIf="!user">
             <a routerLink="/user/register" [ngClass]="{'text-beige': this.router.url == '/user/register'}" class="block py-2 px-3 font-bold  rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Register</a>
           </li>
-          <li *ngIf="this.authService.isLoggedIn()">
+          <li *ngIf="user">
             <a (click)="signOut()" class="block cursor-pointer font-bold py-2 px-3 rounded md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0">Log Out</a>
           </li>
         </ul>

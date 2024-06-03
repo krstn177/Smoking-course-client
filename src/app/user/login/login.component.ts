@@ -13,7 +13,6 @@ export class LoginComponent {
     password: ''
   };
 
-
   inSubmission = false;
   showAlert = false;
   alertMsg = 'Please wait! You are being verified...';
@@ -21,7 +20,7 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  async login(){
+  login(){
     this.inSubmission = true;
     this.showAlert = true;
     this.alertMsg = 'Please wait! You are being verified...';
@@ -30,8 +29,9 @@ export class LoginComponent {
     this.authService.login(
       this.credentials
     ).subscribe({
-      next: async (token) => {
-        await this.authService.setToken(token);
+      next: (res) => {
+        
+        this.authService.setAuthInfoInLocalStorage(res.accessToken, res.watched, res.favourites)
 
         this.inSubmission = false;
         this.alertMsg = 'Success! You are now logged in.';

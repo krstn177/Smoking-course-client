@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateVideoComponent } from './create-video/create-video.component';
-import { adminGuard } from '../Guards/admin.guard';
+import { roleGuard } from '../Guards/role.guard';
 
 const routes: Routes = [
     {
         path: 'create-video',
         component: CreateVideoComponent,
-        canActivate: [adminGuard]
+        canActivate: [roleGuard],
+        data: { roles: ['admin']}
     }
 ];
 

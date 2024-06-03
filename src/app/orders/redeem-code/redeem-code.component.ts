@@ -30,15 +30,22 @@ export class RedeemCodeComponent {
     this.orderService.redeemCode(this.codeObject as IOrderCodeDTO).subscribe({
       next: (res) => {
         console.log(res);
-        this.orderService.setActivatedRole();
+
+        this.authService.refreshAccessToken().subscribe({
+          next: (response: any) => {
+            this.authService.setAuthInfoInLocalStorage(response.accessToken, undefined, undefined);
+          },
+          error: (err) => {
+            throw new Error(err);
+          }
+        });
+
         this.inSubmission = false;
         this.alertColor = 'green';
-        this.alertMsg = 'Success! You successfully activated your account! You will be redirected to the login page. Please login again.';
-
-        this.authService.logout();
+        this.alertMsg = 'Success! You successfully activated your account! You will be redirected to the dashboard in a sec...';
 
         setTimeout(() => {
-          this.router.navigateByUrl('user/login');
+          this.router.navigateByUrl('videos');
         }, 4000)
       },
       error: (err) => {

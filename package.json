@@ -20,6 +20,7 @@
     "@angular/router": "^17.1.0",
     "@types/video.js": "^7.3.56",
     "@videojs/themes": "^1.0.1",
+    "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "video.js": "^8.6.1",
