@@ -43,7 +43,7 @@ export class RegisterComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+      Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/)
     ]),
     confirm_password: new FormControl('', [
       Validators.required
@@ -68,13 +68,17 @@ export class RegisterComponent {
         }, 1000)
       },
       error: (err) => {
-        console.error(err);
-        console.error(err.error);
-
-        this.alertMsg = 'An unexpected error occured. Please try again later';
-
         this.alertColor = 'red';
-        return;
+
+        if (err.error.message == 'Email already registered') {
+          this.alertMsg = 'The email you entered is already registered. Try another email address.';
+        } else{
+          this.alertMsg = 'An unexpected error occured. Please try again later';
+        }
+
+        setTimeout(() => {
+          this.showAlert = false;
+        }, 5000)
       }
     });
   }

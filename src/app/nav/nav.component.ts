@@ -29,6 +29,8 @@ export class NavComponent implements OnInit {
     this.authService.logout().subscribe({
       next: async (res) => {
         console.log('Successfully signed out');
+        this.authService.removeAuthInfo();
+        this.authService.removeAuthInfoStorage();
         await this.router.navigate(['/login']);
         this.loaderService.hideLoader();
       },

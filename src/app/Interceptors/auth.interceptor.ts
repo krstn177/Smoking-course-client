@@ -30,8 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(errorObj => {
         this.loaderService.showLoader();
-        console.log(errorObj);
-        console.log(errorObj.error.message);
+
         if (errorObj.status === 403 && errorObj.error.message === 'jwt expired') {
           // Token expired, try to refresh the token
           return this.authService.refreshAccessToken().pipe(
@@ -56,13 +55,17 @@ export class AuthInterceptor implements HttpInterceptor {
               return throwError(() => err);
             })
           );
+        } else if (errorObj.status == 400){
+          this.loaderService.hideLoader();
+          return throwError(() => errorObj);
+        } else{
+          this.loaderService.hideLoader();
+          this.authService.removeAuthInfo();
+          this.authService.removeAuthInfoStorage();
+          this.router.navigate(['/user/login']);
+  
+          return throwError(() => errorObj);
         }
-        this.loaderService.hideLoader();
-        this.authService.removeAuthInfo();
-        this.authService.removeAuthInfoStorage();
-        this.router.navigate(['/user/login']);
-
-        return throwError(() => errorObj);
       })
     );
   }

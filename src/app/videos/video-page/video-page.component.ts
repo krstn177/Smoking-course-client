@@ -31,6 +31,10 @@ export class VideoPageComponent implements OnInit {
           screenshotUrl: videoData.screenshotUrl
         };
 
+        console.log(videoData);
+        console.log(videoData.next);
+
+
         videoData.hasOwnProperty('previous') ? this.previousVideo = videoData.previous : this.previousVideo = undefined;
         videoData.hasOwnProperty('next') ? this.nextVideo = videoData.next : this.nextVideo = undefined;
       },

@@ -143,8 +143,6 @@ export class AuthService {
 
   logout(){
     this.headerReSetter();
-    this.removeAuthInfo();
-    this.removeAuthInfoStorage();
 
     this.accessToken = null;
     return this.http.get(`${environment.apiUrl}/auth/logout`, this.requestOptions);

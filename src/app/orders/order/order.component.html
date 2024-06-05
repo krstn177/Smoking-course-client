@@ -7,8 +7,8 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                     </svg>
                 </span>
-                <h3 class="font-medium leading-tight text-beige">Personal Info</h3>
-                <p class="text-sm text-beige">Step details here</p>
+                <h3 class="leading-tight font-bold text-darker-blue">Задаване на адрес</h3>
+                <p class="text-sm font-semibold text-darker-blue">Град и адрес</p>
             </li>
             <li class="mb-6 ms-6">
                 <span *ngIf="!reviewStage" class="absolute flex items-center justify-center w-8 h-8 bg-beige rounded-full -start-4 ring-4 ring-white">
@@ -21,8 +21,8 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                     </svg>
                 </span>
-                <h3 class="font-medium leading-tight text-beige">Confirmation</h3>
-                <p class="text-sm text-beige">Step details here</p>
+                <h3 [ngClass]="reviewStage ? 'text-darker-blue':'text-beige'" class="font-bold leading-tight">Потвърждение</h3>
+                <p [ngClass]="reviewStage ? 'text-darker-blue':'text-beige'" class="text-sm font-semibold">Обща информация</p>
             </li>
             <li class="ms-6">
                 <span *ngIf="!successStage" class="absolute flex items-center justify-center w-8 h-8 bg-beige rounded-full -start-4 ring-4 ring-white">
@@ -35,58 +35,92 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                     </svg>
                 </span>
-                <h3 class="font-medium leading-tight text-beige">Confirmation</h3>
-                <p class="text-sm text-beige">Step details here</p>
+                <h3 [ngClass]="reviewStage ? 'text-darker-blue':'text-beige'" class="font-medium leading-tight">Завършване</h3>
+                <p [ngClass]="reviewStage ? 'text-darker-blue':'text-beige'" class="text-sm">При успешно направена поръчка</p>
             </li>
         </ol>
     
         <form [formGroup]="orderForm" (ngSubmit)="onNext()" *ngIf="!reviewStage">
             <div class="grid gap-4 mb-4 sm:grid-cols-2">
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-darker-blue">City</label>
+                    <label class="block mb-2 text-sm font-bold text-darker-blue">Град</label>
                     <app-input [control]="orderForm.controls.city" placeholder="Enter City" type="text"></app-input>
                 </div>
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-darker-blue">Address</label>
+                    <label class="block mb-2 text-sm font-bold text-darker-blue">Адрес</label>
                     <app-input [control]="orderForm.controls.address" placeholder="Enter Address" type="text"></app-input>
                 </div>       
             </div>
-            <button [disabled]="orderForm.invalid" class="text-darker-blue bg-lighter-green hover:bg-beige focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Next
+            <button [disabled]="orderForm.invalid" class="text-darker-blue font-bold bg-lighter-green hover:bg-beige focus:ring-4 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center">
+                Напред
             </button>
         </form>
     
-        <div class="w-full" *ngIf="reviewStage && !successStage">
-            <div>
-                <label class="block mb-2 text-sm font-medium text-darker-blue">Username</label>
-                <p>{{this.userInfo?.name}}</p>
+        <div class="w-full rounded-md overflow-hidden" *ngIf="reviewStage && !successStage">
+            <div class="mb-1 flex justify-between">
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <label class="text-sm text-darker-blue">Username</label>
+                </div>
+                <p class="text-lighter-green">:</p>
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <p>{{this.userInfo?.name}}</p>
+                </div>
             </div>
-            <div>
-                <label class="block mb-2 text-sm font-medium text-darker-blue">Email</label>
-                <p>{{this.userInfo?.email}}</p>
+            <div class="mb-1 flex justify-between">
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <label class="text-sm text-darker-blue">Email</label>
+                </div>
+                <p class="text-lighter-green">:</p>
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <p>{{this.userInfo?.email}}</p>
+                </div>
             </div>
-            <div>
-                <label class="block mb-2 text-sm font-medium text-darker-blue">Age</label>
-                <p>{{this.userInfo?.age}}</p>
+            <div class="mb-1 flex justify-between">
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <label class="text-sm text-darker-blue">Age</label>
+                </div>
+                <p class="text-lighter-green">:</p>
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <p>{{this.userInfo?.age}}</p>
+                </div>
             </div>
-            <div>
-                <label class="block mb-2 text-sm font-medium text-darker-blue">Phone Number</label>
-                <p>{{this.userInfo?.phone}}</p>
+            <div class="mb-1 flex justify-between">
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <label class="text-sm text-darker-blue">Phone Number</label>
+                </div>
+                <p class="text-lighter-green">:</p>
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <p>{{this.userInfo?.phone}}</p>
+                </div>
             </div>
-            <div>
-                <label class="block mb-2 text-sm font-medium text-darker-blue">City</label>
-                <p>{{this.orderInfo?.city}}</p>
+            <div class="mb-1 flex justify-between">
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <label class="text-sm text-darker-blue">City</label>
+                </div>
+                <p class="text-lighter-green">:</p>
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <p>{{this.orderInfo?.city}}</p>
+                </div>
             </div>
-            <div>
-                <label class="block mb-2 text-sm font-medium text-darker-blue">Address</label>
-                <p>{{this.orderInfo?.address}}</p>
+            <div class="mb-1 flex justify-between">
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <label class="text-sm text-darker-blue">Address</label>
+                </div>
+                <p class="text-lighter-green">:</p>
+                <div class="flex justify-center bg-lighter-green w-[45%]">
+                    <p>{{this.orderInfo?.address}}</p>
+                </div>
             </div>
-            <div class="w-full flex justify-between">
-                <button (click)="toggleStages()" class="text-white bg-lighter-green hover:bg-beige focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    Back
+            <div class="w-full flex justify-around gap-3">
+                <button (click)="onSubmit()" class="bg-lighter-green text-darker-green hover:bg-beige hover:text-darker-blue min-w-[200px] focus:ring-4 focus:outline-none font-medium rounded-lg py-2.5 flex justify-center">
+                    <div class="text-sm font-bold">
+                        Назад
+                    </div>
                 </button>
-                <button (click)="onSubmit()" class="text-white bg-lighter-green hover:bg-beige focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                    Submit
+                <button (click)="onSubmit()" class="bg-lighter-green text-darker-green hover:bg-beige hover:text-darker-blue min-w-[200px] focus:ring-4 focus:outline-none font-medium rounded-lg py-2.5 flex justify-center">
+                    <div class="text-sm font-bold">
+                        Поръчай
+                    </div>
                 </button>
             </div>
         </div>
