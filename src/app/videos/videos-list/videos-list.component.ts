@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../Services/video.service';
 import { LoaderService } from '../../Services/loader.service';
-import IVideo from 'src/app/Models/Video.model';
 import IVideoSlim from 'src/app/Models/VideoSlim.model';
 
 @Component({

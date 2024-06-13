@@ -35,7 +35,7 @@ export class RegisterComponent {
     phoneNumber: new FormControl('', [
       Validators.required,
       Validators.minLength(10),
-      Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/)
+      Validators.pattern(/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)
     ]),
     email: new FormControl('', [
       Validators.required,

@@ -57,6 +57,10 @@ export class OrderComponent implements OnInit {
     this.toggleStages();
   }
 
+  onBack(){
+    this.toggleStages();
+  }
+
   onSubmit(){
     this.loaderService.showLoader();
     this.orderService.makeOrder(this.orderInfo as IOrderDTO).subscribe({
@@ -74,9 +78,9 @@ export class OrderComponent implements OnInit {
         
         this.successStage = true;
         this.loaderService.hideLoader();
-        setTimeout(() => {
-          this.router.navigateByUrl('orders/redeem-code');
-        }, 3000)
+        // setTimeout(() => {
+        //   this.router.navigateByUrl('orders/redeem-code');
+        // }, 3000)
       },
       error: (err) => {
         this.loaderService.hideLoader();
