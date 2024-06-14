@@ -36,14 +36,14 @@ export class AuthService {
     if(watched) this.userWatched = watched.split(' ');
     if(favourites) this.userFavourites = favourites.split(' ');
     
-    console.log(this.userSubject.value);
-    console.log(this.userWatched);
-    console.log(this.userFavourites);
-    console.log(this.accessToken);
   }
 
   addWatchedVideo(videoId: string){
-    if (!this.userWatched?.includes(videoId)) this.userWatched?.push(videoId);
+    if (!this.userWatched?.includes(videoId)) {
+      this.userWatched?.push(videoId);
+
+      localStorage.setItem('watched', this.userWatched?.join(' ')!);
+    };
   }
 
   getAuthInfoFromStorage() {
