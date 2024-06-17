@@ -64,7 +64,7 @@ export class CreateVideoComponent {
     this.videoService.createVideo(this.videoForm.value as IVideoCreate).subscribe({
       next: (res) => {
         console.log(res);
-        const { _id } = JSON.parse(res);
+        const { _id } = res;
         this.alertColor = "green";
         this.alertMsg = "Is all good";
         this.inSubmission = false;

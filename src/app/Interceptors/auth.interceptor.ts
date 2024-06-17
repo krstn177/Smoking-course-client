@@ -30,8 +30,11 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(errorObj => {
         this.loaderService.showLoader();
+        console.log(errorObj.error.message);
+        console.log(errorObj.status);
 
         if (errorObj.status === 403 && errorObj.error.message === 'jwt expired') {
+          console.log("WaSSGOOD");
           // Token expired, try to refresh the token
           return this.authService.refreshAccessToken().pipe(
             switchMap((response: any) => {

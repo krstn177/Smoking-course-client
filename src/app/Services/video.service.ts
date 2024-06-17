@@ -40,8 +40,14 @@ export class VideoService {
 
   createVideo(video: IVideoCreate){
     this.headerSetter();
+    if (video.previous == '') {
+      video.previous = null;
+    }
 
+    if (video.next == '') {
+      video.next = null;
+    }
     console.log(video);
-    return this.http.post(`${environment.apiUrl}/videos/create`, video, {...this.requestOptions, responseType: 'text'});
+    return this.http.post<IVideo>(`${environment.apiUrl}/videos/create`, video, {...this.requestOptions, responseType: 'json'});
   }
 }

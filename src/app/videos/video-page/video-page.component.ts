@@ -32,7 +32,6 @@ export class VideoPageComponent implements OnInit {
         };
 
         console.log(videoData);
-        console.log(videoData.next);
 
 
         videoData.hasOwnProperty('previous') ? this.previousVideo = videoData.previous : this.previousVideo = undefined;

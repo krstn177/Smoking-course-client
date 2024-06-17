@@ -1,5 +1,5 @@
 
-<div [routerLink]="['/videos', videoInfo?._id]" class="bg-lighter-green rounded-xl overflow-hidden cursor-pointer shadow-xl duration-200 hover:-translate-y-4">
+<div (click)="onCardClick($event)" class="bg-lighter-green rounded-xl overflow-hidden cursor-pointer shadow-xl duration-200 hover:-translate-y-4">
   <div class="relative aspect-video">
       <img class="w-full h-full object-cover" [src]="videoInfo?.screenshotUrl" [alt]="videoInfo?.title">
       <div class="absolute top-0 right-0 bg-darker-green text-darker-blue font-bold px-2 py-1 m-2 rounded-md">New
@@ -13,12 +13,15 @@
       <div class="text-2xl font-bold text-darker-blue text-center mb-2">{{videoInfo?.title}}</div>
       <p class="text-darker-green text-base text-center">{{videoInfo?.description}}</p>
   </div>
-  <button (click)="toggleFavourite()" class="pb-4 block mx-auto">
-    <svg *ngIf="!isFavourite" class="duration-100 hover:-translate-y-2" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#41B06E" stroke-width="1.5" width="30" height="28" viewBox="0 0 20.923 20">
+  <button (click)="toggleFavourite($event)" class="pb-4 block mx-auto">
+    <svg *ngIf="(!isFavourite && !loadingFavourite)" class="duration-100 hover:-translate-y-2 text-center" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#41B06E" stroke-width="1.5" width="38" height="38" viewBox="0 0 20.923 20">
       <path data-name="Path 1905" d="m334.737 27.228 2.306 4.672a.431.431 0 0 0 .324.235l5.156.749a.43.43 0 0 1 .238.734l-3.731 3.636a.43.43 0 0 0-.124.381l.881 5.135a.43.43 0 0 1-.624.453l-4.612-2.423a.43.43 0 0 0-.4 0l-4.611 2.424a.43.43 0 0 1-.624-.453l.881-5.135a.43.43 0 0 0-.124-.381l-3.731-3.636a.43.43 0 0 1 .238-.734l5.156-.749a.43.43 0 0 0 .324-.235l2.306-4.672a.43.43 0 0 1 .771-.001z" transform="translate(-325.303 -26.488)"></path>
     </svg>
-    <svg *ngIf="isFavourite" class="duration-100 hover:-translate-y-2" xmlns="http://www.w3.org/2000/svg" fill="#fcc822" stroke="#fcc822" stroke-width="1.5" width="30" height="28" viewBox="0 0 20.923 20">
+    <svg *ngIf="(isFavourite && !loadingFavourite)" class="duration-100 hover:-translate-y-2 text-center" xmlns="http://www.w3.org/2000/svg" fill="#fcc822" stroke="#fcc822" stroke-width="1.5" width="38" height="38" viewBox="0 0 20.923 20">
       <path data-name="Path 1905" d="m334.737 27.228 2.306 4.672a.431.431 0 0 0 .324.235l5.156.749a.43.43 0 0 1 .238.734l-3.731 3.636a.43.43 0 0 0-.124.381l.881 5.135a.43.43 0 0 1-.624.453l-4.612-2.423a.43.43 0 0 0-.4 0l-4.611 2.424a.43.43 0 0 1-.624-.453l.881-5.135a.43.43 0 0 0-.124-.381l-3.731-3.636a.43.43 0 0 1 .238-.734l5.156-.749a.43.43 0 0 0 .324-.235l2.306-4.672a.43.43 0 0 1 .771-.001z" transform="translate(-325.303 -26.488)"></path>
     </svg>
+    <div *ngIf="loadingFavourite" class="w-[38px] h-[38px]">
+      <div class="fas fa-circle-notch fa-spin text-center fa-2x text-darker-green"></div>
+    </div>
   </button>
 </div>

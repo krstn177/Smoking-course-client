@@ -114,8 +114,16 @@ export class AuthService {
   }
 
   toggleFavouriteVideo(videoId: string): void {
-    if (this.userFavourites?.includes(videoId)) this.userFavourites?.filter(video => video !== videoId);
-    else this.userFavourites?.push(videoId);
+    console.log(this.userFavourites);
+    if (this.userFavourites?.includes(videoId)) {
+      this.userFavourites = this.userFavourites?.filter(video => video !== videoId);
+      console.log(this.userFavourites);
+      localStorage.setItem('favourites', this.userFavourites?.join(' '));
+    }
+    else {
+      this.userFavourites?.push(videoId);
+      localStorage.setItem('favourites', this.userFavourites?.join(' ') || '');
+    } ;
   } 
 
   headerReSetter() {
@@ -127,6 +135,12 @@ export class AuthService {
     this.requestOptions = { 
       headers: new HttpHeaders(this.headerDict)
     }
+  }
+
+  toggleUserFavouriteRequest(videoId: string){
+    this.headerReSetter();
+
+    return this.http.get(`${environment.apiUrl}/videos/toggleFavorite/${videoId}`, this.requestOptions)
   }
 
   login(payload: Object): Observable<IAuthInfo>{
