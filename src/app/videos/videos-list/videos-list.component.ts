@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { VideoService } from '../../Services/video.service';
 import { LoaderService } from '../../Services/loader.service';
 import IVideoSlim from 'src/app/Models/VideoSlim.model';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-videos-list',
@@ -9,14 +10,18 @@ import IVideoSlim from 'src/app/Models/VideoSlim.model';
   styleUrls: ['./videos-list.component.scss']
 })
 export class VideosListComponent implements OnInit {
-  videos? : IVideoSlim[]
+  initialVideos? : IVideoSlim[];
+  videos?: IVideoSlim[];
+  searchTerm: string = '';
+  showFavourites: boolean = false;
 
-  constructor(private videoService: VideoService, private loaderService: LoaderService) {}
+  constructor(private videoService: VideoService, private loaderService: LoaderService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loaderService.showLoader();
     this.videoService.getList().subscribe({
       next: (videos) =>{
+        this.initialVideos = videos;
         this.videos = videos;
         console.log(videos)
         this.loaderService.hideLoader();
@@ -26,5 +31,19 @@ export class VideosListComponent implements OnInit {
         this.loaderService.hideLoader();
       }
     });
+  }
+
+  toggleFavourites(): void{
+    this.showFavourites = !this.showFavourites;
+    if (this.showFavourites) {
+      const favourites = this.authService.getUserFavourites();
+      this.videos = this.videos?.filter(video => favourites?.includes(video._id));
+    } else {
+      this.videos = this.initialVideos;
+    }
+  }
+
+  search(): void{
+    this.videos = this.initialVideos?.filter(video => video.title.toLowerCase().includes(this.searchTerm) || video.description.toLowerCase().includes(this.searchTerm));
   }
 }

@@ -5,12 +5,12 @@ import IVideo from '../Models/Video.model';
 import { AuthService } from './auth.service';
 import IVideoCreate from '../Models/VideoCreate.model';
 import IVideoSlim from '../Models/VideoSlim.model';
+import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VideoService {
-  
   constructor(private http: HttpClient, private auth: AuthService) {}
   token = this.auth.getAccessToken();
   headerDict = { }

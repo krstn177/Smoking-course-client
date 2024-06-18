@@ -9,22 +9,14 @@
                 <p>{{videoDataObj?.description}}</p>
             </div>
         </div>
-        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 lg:h-[75vh] rounded-xl bg-darker-green">
-            <h2 class="text-beige text-lg font-bold text-center mb-4">Previous:</h2>
-            <div [routerLink]="['/videos', previousVideo?._id]" class="mx-auto cursor-pointer rounded-xl bg-darker-blue h-[30vh] md:h-[40vh] w-5/6 lg:h-2/5 overflow-hidden duration-200 hover:-translate-y-4">
-                <div class="w-full h-2/3 flex flex-col justify-between overflow-hidden">
-                    <img [src]="previousVideo?.screenshotUrl" crossorigin [alt]="previousVideo?.title" class="h-full w-full object-cover" />
-                </div>
-                <p class="text-lighter-green text-lg max-h-24 font-bold text-center text-ellipsis overflow-hidden">{{previousVideo?.title}}</p>
-                <p class="text-green-600 h-6 text-base text-center text-ellipsis">Is Watched</p>
+        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 rounded-xl md:bg-darker-green">
+            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Previous:</h2>
+            <div class="md:px-8 mb-4">
+                <app-video-card [videoInfo]="previousVideo"></app-video-card>
             </div>
-            <h2 class="text-beige text-lg font-bold text-center mb-4">Next:</h2>
-            <div [routerLink]="['/videos', nextVideo?._id]" class="mx-auto cursor-pointer rounded-xl bg-darker-blue h-[30vh] md:h-[40vh] w-5/6 lg:h-2/5 overflow-hidden duration-200 hover:-translate-y-4">
-                <div class="w-full h-2/3 flex flex-col justify-between overflow-hidden">
-                    <img [src]="nextVideo?.screenshotUrl" crossorigin [alt]="nextVideo?.title" class="h-full w-full object-cover duration-200" />
-                </div>
-                <p class="text-lighter-green text-lg max-h-24 font-bold text-center text-ellipsis overflow-hidden">{{nextVideo?.title}}</p>
-                <p class="text-yellow-400 h-6 text-sm text-center">Is Watched</p>
+            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Next:</h2>
+            <div class="md:px-8">
+                <app-video-card [videoInfo]="nextVideo"></app-video-card>
             </div>
         </div>
     </div>

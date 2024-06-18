@@ -1,3 +1,19 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-10 px-4 sm:px-8 md:px-15 lg:px-20 bg-beige">
+
+<div class="bg-beige">
+    <form #searchForm="ngForm" (ngSubmit)="search()" class="max-w-md mx-auto mb-4">
+        <label for="default-search" class="mb-2 text-sm font-medium text-darker-green sr-only dark:text-white">Search</label>
+        <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-darker-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+            </div>
+            <input name="searchTerm" [(ngModel)]="searchTerm" type="search" id="default-search" class="block w-full p-4 ps-10 text-sm bg-lighter-green text-darker-blue border placeholder-darker-blue border-green-500 rounded-2xl focus:ring-green-700 focus:border-green-700" placeholder="Търсете по заглавие..."/>
+            <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-darker-green hover:bg-green-900 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2">Търси</button>
+        </div>
+    </form>
+    <button (click)="toggleFavourites()" [ngClass]="{'bg-beige border-2 hover:bg-white border-darker-green text-darker-green': showFavourites === true, 'bg-darker-green border hover:bg-green-900 border-beige text-beige' : showFavourites === false }" class="mx-auto border block font-medium rounded-lg text-base px-4 py-2">Любими <i class="fa-solid fa-star"></i></button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-10 px-4 sm:px-8 md:px-15 lg:px-20 bg-beige">    
     <app-video-card *ngFor="let video of videos" [videoInfo]="video"></app-video-card>
 </div>
