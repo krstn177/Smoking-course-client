@@ -24,15 +24,6 @@ export class VideoCardComponent implements OnInit {
     }
   }
 
-  onCardClick(event: MouseEvent) {
-    const target = event.currentTarget as HTMLElement;
-    console.log(target);
-    if (target.tagName !== 'BUTTON' && target.parentElement?.tagName !== 'BUTTON') {
-      this.router.navigateByUrl(`videos/${this.videoInfo?._id}`);
-      console.log('Redirecting to video details');
-    }
-  }
-
   toggleFavourite(event: MouseEvent) {
     event.stopPropagation();
     this.loadingFavourite = true;

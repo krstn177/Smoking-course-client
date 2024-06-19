@@ -1,5 +1,4 @@
-
-<div (click)="onCardClick($event)" class="bg-lighter-green rounded-xl overflow-hidden cursor-pointer shadow-xl duration-200 hover:-translate-y-4">
+<div [routerLink]="['/videos', videoInfo?._id]" class="bg-lighter-green rounded-xl overflow-hidden cursor-pointer shadow-xl duration-200 hover:-translate-y-4">
   <div class="relative aspect-video">
       <img class="w-full h-full object-cover" [src]="videoInfo?.screenshotUrl" [alt]="videoInfo?.title">
       <div class="absolute top-0 right-0 bg-darker-green text-darker-blue font-bold px-2 py-1 m-2 rounded-md">New

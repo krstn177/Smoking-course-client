@@ -14,6 +14,6 @@
     </form>
     <button (click)="toggleFavourites()" [ngClass]="{'bg-beige border-2 hover:bg-white border-darker-green text-darker-green': showFavourites === true, 'bg-darker-green border hover:bg-green-900 border-beige text-beige' : showFavourites === false }" class="mx-auto border block font-medium rounded-lg text-base px-4 py-2">Любими <i class="fa-solid fa-star"></i></button>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-10 px-4 sm:px-8 md:px-15 lg:px-20 bg-beige">    
+<div class="min-h-[40vh] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-10 px-4 sm:px-8 md:px-15 lg:px-20 bg-beige">    
     <app-video-card *ngFor="let video of videos" [videoInfo]="video"></app-video-card>
 </div>
