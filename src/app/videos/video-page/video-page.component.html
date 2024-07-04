@@ -26,11 +26,11 @@
             </div>
         </div>
         <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 rounded-xl md:bg-darker-green">
-            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Previous:</h2>
+            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Предишен:</h2>
             <div class="md:px-8 mb-4">
                 <app-video-card [videoInfo]="previousVideo"></app-video-card>
             </div>
-            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Next:</h2>
+            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Следващ:</h2>
             <div class="md:px-8">
                 <app-video-card [videoInfo]="nextVideo"></app-video-card>
             </div>

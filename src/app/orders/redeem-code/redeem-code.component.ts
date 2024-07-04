@@ -16,7 +16,7 @@ export class RedeemCodeComponent {
 
   inSubmission = false;
   showAlert = false;
-  alertMsg = 'Please wait! You are being verified...';
+  alertMsg = 'Моля изчакайте! Верифицираме информацията Ви...';
   alertColor = 'blue';
 
   constructor(private router: Router, private orderService: OrderService, private authService: AuthService) {}
@@ -24,7 +24,7 @@ export class RedeemCodeComponent {
   redeemCode(){
     this.inSubmission = true;
     this.showAlert = true;
-    this.alertMsg = 'Please wait! You are being verified...';
+    this.alertMsg = 'Моля изчакайте! Верифицираме информацията Ви...';
     this.alertColor = 'blue';
 
     this.orderService.redeemCode(this.codeObject as IOrderCodeDTO).subscribe({
@@ -42,7 +42,7 @@ export class RedeemCodeComponent {
 
         this.inSubmission = false;
         this.alertColor = 'green';
-        this.alertMsg = 'Success! You successfully activated your account! You will be redirected to the dashboard in a sec...';
+        this.alertMsg = 'Успешно активирахте акаунта си! Ще бъдете прехвърлени към страницата с клипове след момент...';
 
         setTimeout(() => {
           this.router.navigateByUrl('videos');
@@ -52,7 +52,7 @@ export class RedeemCodeComponent {
         console.log(err);
         this.inSubmission = false;
         this.alertColor = 'red';
-        this.alertMsg = 'Oops! Something went wrong!';
+        this.alertMsg = 'Опа! Нещо се обърка!';
       }
     });
   }

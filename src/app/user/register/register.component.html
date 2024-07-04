@@ -1,4 +1,5 @@
-<div class="w-full min-h-[60vh] py-16 bg-beige">
+<h1 class="text-center pt-10 text-5xl font-bold text-darker-green bg-beige">РЕГИСТРАЦИЯ</h1>
+<div class="w-full min-h-[60vh] py-14 bg-beige">
   <div class="w-full max-w-xs mx-auto">
       <app-alert *ngIf="showAlert" [color]="alertColor">
         {{  alertMsg  }}
@@ -10,36 +11,36 @@
           </label>
           <app-input
             [control]="registerForm.controls.email"
-            placeholder="Enter Email"
+            placeholder="Въведи Email"
           ></app-input>
         </div>
         <div class="mb-6">
           <label class="block text-darker-green text-sm font-bold mb-2" for="name">
-           First Name
+           Име
           </label>
           <app-input
             [control]="registerForm.controls.firstName"
-            placeholder="Enter Name"
+            placeholder="Въведи Име"
             type="text"
           ></app-input>
         </div>
         <div class="mb-6">
           <label class="block text-darker-green text-sm font-bold mb-2" for="name">
-           Last Name
+           Фамилия
           </label>
           <app-input
             [control]="registerForm.controls.lastName"
-            placeholder="Enter Name"
+            placeholder="Въведи Фамилия"
             type="text"
           ></app-input>
         </div>
         <div class="mb-6">
           <label class="block text-darker-green text-sm font-bold mb-2" for="age">
-            Age
+            Възраст
           </label>
           <app-input
             [control]="registerForm.controls.age"
-            placeholder="Enter Age"
+            placeholder="Въведи Възраст"
             type="number"
             min="14"
             max="120"
@@ -47,31 +48,31 @@
         </div>
         <div class="mb-6">
           <label class="block text-darker-green text-sm font-bold mb-2" for="phoneNumber">
-            Phone Number
+            Телефонен номер
           </label>
           <app-input
             [control]="registerForm.controls.phoneNumber"
-            placeholder="Enter Phone Number"
+            placeholder="Въведи телефонен номер"
             type="text"
           ></app-input>
         </div>
         <div class="mb-6">
           <label class="block text-darker-green text-sm font-bold mb-2" for="password">
-            Password
+            Парола
           </label>
           <app-input
             [control]="registerForm.controls.password"
-            placeholder="Enter Password"
+            placeholder="Въведи парола"
             type="password"
           ></app-input>
         </div>
         <div class="mb-6">
             <label class="block text-darker-green text-sm font-bold mb-2" for="password">
-              Confirm Password
+              Потвърди Парола
             </label>
             <app-input
               [control]="registerForm.controls.confirm_password"
-              placeholder="Confirm Password"
+              placeholder="Повтори парола"
               type="password"
             ></app-input> 
           </div>
@@ -81,7 +82,7 @@
           type="submit"
           [disabled]="registerForm.invalid || inSubmission"
           >
-            Register
+            Регистрирай се
           </button>       
         </div>
       </form>

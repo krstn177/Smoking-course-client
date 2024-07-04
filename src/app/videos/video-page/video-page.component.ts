@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import IVideo from 'src/app/Models/Video.model';
 import IVideoSlim from 'src/app/Models/VideoSlim.model';
 import { AuthService } from 'src/app/Services/auth.service';
+import { LoaderService } from 'src/app/Services/loader.service';
 import { VideoService } from 'src/app/Services/video.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class VideoPageComponent implements OnInit {
   isFavourite: boolean = false;
   loadingFavourite: boolean = false;
 
-  constructor(public videoService: VideoService, public route: ActivatedRoute, public authService: AuthService){}
+  constructor(public videoService: VideoService, public route: ActivatedRoute, public authService: AuthService, public loaderService: LoaderService){}
 
   loadVideo(videoId: string): void {
     this.videoService.getVideoInfo(videoId).subscribe({
@@ -40,9 +41,12 @@ export class VideoPageComponent implements OnInit {
         
         videoData.hasOwnProperty('previous') ? this.previousVideo = videoData.previous : this.previousVideo = undefined;
         videoData.hasOwnProperty('next') ? this.nextVideo = videoData.next : this.nextVideo = undefined;
+
+        this.loaderService.hideLoader();
       },
       error: (err: any) => {
-        console.log(err)
+        console.log(err);
+        this.loaderService.hideLoader();
       }
     });
   }
@@ -51,6 +55,7 @@ export class VideoPageComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const videoId = params.get('id');
       if (videoId) {
+        this.loaderService.showLoader();
         this.loadVideo(videoId);
       }
     });

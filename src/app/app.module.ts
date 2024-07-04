@@ -12,12 +12,14 @@ import { AdminModule } from './admin/admin.module';
 import { LandingComponent } from './landing/landing.component';
 import { OrdersModule } from './orders/orders.module';
 import { FooterComponent } from './footer/footer.component';
+import { FaqModuleComponent } from './faq-module/faq-module.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    LandingComponent
+    LandingComponent,
+    FaqModuleComponent
   ],
   imports: [
     BrowserModule,

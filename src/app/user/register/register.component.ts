@@ -13,7 +13,7 @@ import { RegisterValidators } from 'src/app/Validators/register-validators';
 export class RegisterComponent {
   inSubmission = false;
   showAlert = false;
-  alertMsg = 'Please wait! Your account is being created...';
+  alertMsg = 'Моля изчакайте! Създаваме акаунта Ви...';
   alertColor = 'blue';
 
   constructor(private authService: AuthService, private router: Router ){}
@@ -58,7 +58,7 @@ export class RegisterComponent {
         this.authService.setAuthInfoInLocalStorage(res.accessToken, res.watched, res.favourites);
         this.authService.setAccessToken(res.accessToken);
         
-        this.alertMsg = 'Success! Your account has been created.';
+        this.alertMsg = 'Акаунтът Ви е създаден успешно!';
         this.alertColor = 'green';
         this.inSubmission = false;
 
@@ -71,9 +71,9 @@ export class RegisterComponent {
         this.alertColor = 'red';
 
         if (err.error.message == 'Email already registered') {
-          this.alertMsg = 'The email you entered is already registered. Try another email address.';
+          this.alertMsg = 'Имейлът, който въведохте вече е използван от друг профил. Пробвайте с друг имейл.';
         } else{
-          this.alertMsg = 'An unexpected error occured. Please try again later';
+          this.alertMsg = 'Грешка! Пробвайте отново след малко.';
         }
 
         setTimeout(() => {

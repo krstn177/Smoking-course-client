@@ -12,7 +12,7 @@ import { VideoService } from 'src/app/Services/video.service';
 export class CreateVideoComponent {
   inSubmission = false;
   showAlert = false;
-  alertMsg = 'Please wait! Your account is being created...';
+  alertMsg = 'Моля изчакай! Клипът се създава...';
   alertColor = 'blue';
 
   constructor(private videoService: VideoService, private router: Router) {}
@@ -66,7 +66,7 @@ export class CreateVideoComponent {
         console.log(res);
         const { _id } = res;
         this.alertColor = "green";
-        this.alertMsg = "Is all good";
+        this.alertMsg = "Получи се!";
         this.inSubmission = false;
 
         setTimeout(() => {
@@ -76,7 +76,7 @@ export class CreateVideoComponent {
       error: (err) => {
         console.error(err);
         this.alertColor = "red";
-        this.alertMsg = "Is all not good";
+        this.alertMsg = "Нещо не се получи!";
         this.inSubmission = false;
       }
     });

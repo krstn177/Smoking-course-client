@@ -1,3 +1,4 @@
+<h1 class="text-center pt-10 text-5xl font-bold text-darker-green bg-beige">ВЛЕЗ В ПРОФИЛА СИ</h1>
 <div class="w-full h-[52vh] py-[52px] bg-beige">
   <div class="w-full max-w-xs  mx-auto">
     <app-alert *ngIf="showAlert" [color]="alertColor">
@@ -8,32 +9,32 @@
           <label class="block text-darker-green text-sm font-bold mb-2" for="email">
             Email
           </label>
-          <input class="block w-full py-1.5 px-3 text-darker-green border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-darker-green focus:border-beige"
+          <input class="block w-full py-1.5 px-3 placeholder-darker-green text-darker-blue border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-darker-green focus:border-beige"
                 #email="ngModel"
                 type="email"
                 name="email"
                 [(ngModel)]="credentials.email"
-                placeholder="Enter Email"
+                placeholder="Въведи Email"
                 required
               />
         </div>
         <div class="mb-6">
           <label class="block text-darker-green text-sm font-bold mb-2" for="password">
-            Password
+            Парола
           </label>
           <input
                 #password="ngModel"
                 type="password"
                 name="password"
                 [(ngModel)]="credentials.password"
-                class="block w-full py-1.5 px-3 text-darker-green border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-darker-green focus:border-beige"
-                placeholder="Password"
+                placeholder="Въведи Парола"
+                class="block w-full py-1.5 px-3 placeholder-darker-green text-darker-blue border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-darker-green focus:border-beige"
                 required
               />
         </div>
         <div class="flex items-center justify-between">
           <button class="bg-darker-green hover:bg-beige text-darker-blue font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="submit">
-            Log In
+            Влез
           </button>       
         </div>
     </form>

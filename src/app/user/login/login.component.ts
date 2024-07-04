@@ -15,7 +15,7 @@ export class LoginComponent {
 
   inSubmission = false;
   showAlert = false;
-  alertMsg = 'Please wait! You are being verified...';
+  alertMsg = 'Моля изчакайте! Верифицираме информацията Ви...';
   alertColor = 'blue';
 
   constructor(private router: Router, private authService: AuthService) {}
@@ -23,7 +23,7 @@ export class LoginComponent {
   login(){
     this.inSubmission = true;
     this.showAlert = true;
-    this.alertMsg = 'Please wait! You are being verified...';
+    this.alertMsg = 'Моля изчакайте! Верифицираме информацията Ви...';
     this.alertColor = 'blue';
 
     this.authService.login(
@@ -34,7 +34,7 @@ export class LoginComponent {
         this.authService.setAuthInfoInLocalStorage(res.accessToken, res.watched, res.favourites)
 
         this.inSubmission = false;
-        this.alertMsg = 'Success! You are now logged in.';
+        this.alertMsg = 'Успешно влязохте в профила си.';
         this.alertColor = 'green';
 
         setTimeout(() => {
@@ -46,7 +46,7 @@ export class LoginComponent {
       error: (error) => {
         console.log(error.message);
         this.inSubmission = false;
-        this.alertMsg = 'Error! Something went wrong please try again later.';
+        this.alertMsg = 'Нещо се обърка! Пробвайте отново.';
         this.alertColor = 'red';
 
         setTimeout(() => {
