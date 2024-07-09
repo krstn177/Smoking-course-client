@@ -1,7 +1,7 @@
-<div class="bg-beige w-full py-16 min-h-screen xl:px-8 px-4">
+<div class="bg-darker-green w-full py-16 min-h-screen xl:px-8 px-4">
     <div class="md:gap-5 flex lg:flex-row flex-col lg:m-0 sm:mx-5 align-middle lg:justify-center">
         <div [ngClass]="{'lg:w-full': !previousVideo && !nextVideo}" class="lg:w-10/12 w-full">
-            <div class="lg:max-w-[70vw] mx-auto aspect-video w-full rounded-xl bg-darker-green">
+            <div class="lg:max-w-[70vw] mx-auto aspect-video w-full rounded-xl bg-beige">
                 Yo
             </div>
             <div class="flex justify-between w-full my-5 px-3 lg:max-w-[70vw] mx-auto">
@@ -25,12 +25,12 @@
                 <p>{{videoDataObj?.description}}</p>
             </div>
         </div>
-        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 rounded-xl md:bg-darker-green">
-            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Предишен:</h2>
+        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 rounded-xl md:bg-beige">
+            <h2 class="md:text-darker-green text-beige text-2xl font-bold text-center mb-4">Предишен:</h2>
             <div class="md:px-8 mb-4">
                 <app-video-card [videoInfo]="previousVideo"></app-video-card>
             </div>
-            <h2 class="md:text-beige text-darker-green text-lg font-bold text-center mb-4">Следващ:</h2>
+            <h2 class="md:text-darker-green text-beige text-2xl font-bold text-center mb-4">Следващ:</h2>
             <div class="md:px-8">
                 <app-video-card [videoInfo]="nextVideo"></app-video-card>
             </div>

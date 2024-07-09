@@ -1,15 +1,15 @@
-<h1 class="text-center pt-10 text-5xl font-bold text-darker-green bg-beige">ВЛЕЗ В ПРОФИЛА СИ</h1>
-<div class="w-full h-[52vh] py-[52px] bg-beige">
+<h1 class="text-center pt-10 text-5xl font-bold text-beige bg-darker-green">ВЛЕЗ В ПРОФИЛА СИ</h1>
+<div class="w-full h-[52vh] py-[52px] bg-darker-green">
   <div class="w-full max-w-xs  mx-auto">
     <app-alert *ngIf="showAlert" [color]="alertColor">
       {{  alertMsg  }}
     </app-alert>
-    <form #loginForm="ngForm" (ngSubmit)="login()" class="bg-lighter-green shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+    <form #loginForm="ngForm" (ngSubmit)="login()" class="bg-beige shadow-xl rounded-3xl px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="email">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="email">
             Email
           </label>
-          <input class="block w-full py-1.5 px-3 placeholder-darker-green text-darker-blue border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-darker-green focus:border-beige"
+          <input class="block w-full py-1.5 px-3 placeholder-darker-blue text-darker-blue border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-beige focus:border-darker-green"
                 #email="ngModel"
                 type="email"
                 name="email"
@@ -19,7 +19,7 @@
               />
         </div>
         <div class="mb-6">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="password">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="password">
             Парола
           </label>
           <input
@@ -28,12 +28,12 @@
                 name="password"
                 [(ngModel)]="credentials.password"
                 placeholder="Въведи Парола"
-                class="block w-full py-1.5 px-3 placeholder-darker-green text-darker-blue border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-darker-green focus:border-beige"
+                class="block w-full py-1.5 px-3 placeholder-darker-blue text-darker-blue border transition duration-500 focus:outline-none rounded-xl bg-lighter-green border-beige focus:border-darker-green"
                 required
               />
         </div>
         <div class="flex items-center justify-between">
-          <button class="bg-darker-green hover:bg-beige text-darker-blue font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="submit">
+          <button class="bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" type="submit">
             Влез
           </button>       
         </div>

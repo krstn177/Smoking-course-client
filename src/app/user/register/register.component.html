@@ -1,12 +1,12 @@
-<h1 class="text-center pt-10 text-5xl font-bold text-darker-green bg-beige">РЕГИСТРАЦИЯ</h1>
-<div class="w-full min-h-[60vh] py-14 bg-beige">
+<h1 class="text-center pt-10 text-5xl font-bold text-beige bg-darker-green">РЕГИСТРАЦИЯ</h1>
+<div class="w-full min-h-[60vh] py-14 bg-darker-green">
   <div class="w-full max-w-xs mx-auto">
       <app-alert *ngIf="showAlert" [color]="alertColor">
         {{  alertMsg  }}
       </app-alert>
-      <form [formGroup]="registerForm" (ngSubmit)="register()" class="bg-lighter-green shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4">
+      <form [formGroup]="registerForm" (ngSubmit)="register()" class="bg-beige shadow-xl rounded-3xl px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="email">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="email">
             Email
           </label>
           <app-input
@@ -15,7 +15,7 @@
           ></app-input>
         </div>
         <div class="mb-6">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="name">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="name">
            Име
           </label>
           <app-input
@@ -25,7 +25,7 @@
           ></app-input>
         </div>
         <div class="mb-6">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="name">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="name">
            Фамилия
           </label>
           <app-input
@@ -35,7 +35,7 @@
           ></app-input>
         </div>
         <div class="mb-6">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="age">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="age">
             Възраст
           </label>
           <app-input
@@ -47,7 +47,7 @@
           ></app-input>
         </div>
         <div class="mb-6">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="phoneNumber">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="phoneNumber">
             Телефонен номер
           </label>
           <app-input
@@ -57,7 +57,7 @@
           ></app-input>
         </div>
         <div class="mb-6">
-          <label class="block text-darker-green text-sm font-bold mb-2" for="password">
+          <label class="block text-darker-blue text-base font-bold mb-2" for="password">
             Парола
           </label>
           <app-input
@@ -67,7 +67,7 @@
           ></app-input>
         </div>
         <div class="mb-6">
-            <label class="block text-darker-green text-sm font-bold mb-2" for="password">
+            <label class="block text-darker-blue text-base font-bold mb-2" for="password">
               Потвърди Парола
             </label>
             <app-input
@@ -78,7 +78,7 @@
           </div>
         <div class="flex items-center justify-between">
           <button 
-          class="bg-darker-green hover:bg-beige text-darker-blue font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" 
+          class="bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" 
           type="submit"
           [disabled]="registerForm.invalid || inSubmission"
           >

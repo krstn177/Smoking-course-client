@@ -1,26 +1,27 @@
-<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-beige my-10">
-    <!-- <h2 class="text-center font-extrabold text-5xl py-4 text-darker-blue">Как ще ми помогне този курс?</h2> -->
-    <div [ngClass]="{'xl:flex-row-reverse':this.reversed, 'xl:flex-row': !this.reversed}" class="flex flex-col-reverse items-center xl:items-start xl:gap-6">
-      <div class="my-auto">
-        <h2 class="text-3xl text-center tracking-tight font-extrabold text-darker-blue sm:text-4xl md:text-5xl">
-          <span class="block">{{titleQuestionSpan1}}</span>
-          <span class="block text-darker-green">{{titleQuestionSpan2}}</span>
-        </h2>
-        <p class="mt-3 text-center text-base text-darker-blue font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-          {{description}}
-        </p>
-        <div class="mt-5 sm:mt-8 mx-auto">
-          <div class="rounded-md shadow">
-            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
-              Влез в курса
-            </a>
+<div class="bg-darker-green py-8">
+  <div class="mx-auto xl:max-w-7xl max-w-4xl bg-beige my-2 rounded-3xl p-12">
+      <div [ngClass]="{'xl:flex-row-reverse':this.reversed, 'xl:flex-row': !this.reversed}" class="flex flex-col-reverse items-center xl:items-start xl:gap-6">
+        <div class="my-auto">
+          <h2 class="text-3xl text-center tracking-tight font-extrabold text-darker-blue sm:text-4xl md:text-5xl">
+            <span class="block">{{titleQuestionSpan1}}</span>
+            <span class="block text-darker-green">{{titleQuestionSpan2}}</span>
+          </h2>
+          <p class="mt-3 text-center text-base text-darker-blue font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
+            {{description}}
+          </p>
+          <div class="mt-5 sm:mt-8 mx-auto">
+            <div class="rounded-md shadow">
+              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                Влез в курса
+              </a>
+            </div>
           </div>
         </div>
+        <div class="mt-8 xl:mt-0 xl:w-1/2 max-w-[600px] rounded-2xl overflow-hidden">
+          <video autoplay class="w-full aspect-[4/3] object-cover" [muted]="true">
+            <source src="assets/{{videoName}}" type="video/mp4">
+          </video>
+        </div>
       </div>
-      <div class="mt-8 xl:mt-0 xl:w-1/2 max-w-[600px] rounded-2xl overflow-hidden">
-        <video autoplay class="w-full aspect-[4/3] object-cover" [muted]="true">
-          <source src="assets/{{videoName}}" type="video/mp4">
-        </video>
-      </div>
-    </div>
+  </div>
 </div>
