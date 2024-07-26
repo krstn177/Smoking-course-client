@@ -16,18 +16,21 @@ export class FaqModuleComponent implements AfterViewInit, OnDestroy{
   public videoPlayed: boolean = false;
   private observer: IntersectionObserver | null = null;
 
-  constructor(private elementRef: ElementRef) {}
+  public isLoggedIn: boolean = false;
+
+  constructor(private elementRef: ElementRef) {
+    this.isLoggedIn = !!localStorage.getItem('accessToken');
+  }
 
   ngAfterViewInit(): void {
     this.video = this.elementRef.nativeElement.querySelector('video');
     this.video?.pause();
 
-    console.log(this.video);
 
     if (this.video) {
       this.observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          console.log('yea');
+          
           if (entry.isIntersecting && !this.videoPlayed) {
             this.video?.play();
             this.videoPlayed = true;

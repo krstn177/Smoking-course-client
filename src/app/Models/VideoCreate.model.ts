@@ -4,6 +4,7 @@ export default interface IVideoCreate{
     description: string;
     videoUrl: string;
     screenshotUrl: string;
+    duration: string;
     previous?: string | null;
     next?: string | null;
 }

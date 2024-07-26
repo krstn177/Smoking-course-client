@@ -1,5 +1,5 @@
 <div class="bg-darker-green py-8">
-  <div class="mx-auto xl:max-w-7xl max-w-4xl bg-beige my-2 rounded-3xl p-12">
+  <div class="mx-auto shadow-md xl:max-w-7xl max-w-4xl bg-beige my-2 rounded-3xl p-12">
       <div [ngClass]="{'xl:flex-row-reverse':this.reversed, 'xl:flex-row': !this.reversed}" class="flex flex-col-reverse items-center xl:items-start xl:gap-6">
         <div class="my-auto">
           <h2 class="text-3xl text-center tracking-tight font-extrabold text-darker-blue sm:text-4xl md:text-5xl">
@@ -11,8 +11,11 @@
           </p>
           <div class="mt-5 sm:mt-8 mx-auto">
             <div class="rounded-md shadow">
-              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                 Влез в курса
+              </a>
+              <a *ngIf="isLoggedIn" routerLink="/videos" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                Към клиповете
               </a>
             </div>
           </div>

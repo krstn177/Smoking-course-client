@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { OrderComponent } from './order/order.component';
 import { RedeemCodeComponent } from './redeem-code/redeem-code.component';
 import { OrdersRoutingModule } from './orders-routing.module';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 
 
@@ -18,7 +19,9 @@ import { OrdersRoutingModule } from './orders-routing.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    OrdersRoutingModule
+    OrdersRoutingModule,
+    RecaptchaModule,
+    RecaptchaFormsModule
   ]
 })
 export class OrdersModule { }

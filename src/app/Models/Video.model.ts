@@ -6,6 +6,7 @@ export default interface IVideo{
     description: string;
     videoUrl: string;
     screenshotUrl: string;
+    duration: string;
     previous?: IVideoSlim;
     next?: IVideoSlim;
 }

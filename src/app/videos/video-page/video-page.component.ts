@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
+import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import IVideo from 'src/app/Models/Video.model';
 import IVideoSlim from 'src/app/Models/VideoSlim.model';
@@ -19,7 +20,8 @@ export class VideoPageComponent implements OnInit {
   isFavourite: boolean = false;
   loadingFavourite: boolean = false;
 
-  constructor(public videoService: VideoService, public route: ActivatedRoute, public authService: AuthService, public loaderService: LoaderService){}
+  videoUrlSanitized: SafeResourceUrl | null = null;
+  constructor(public videoService: VideoService, public route: ActivatedRoute, public authService: AuthService, public loaderService: LoaderService, public sanitizer: DomSanitizer){}
 
   loadVideo(videoId: string): void {
     this.videoService.getVideoInfo(videoId).subscribe({
@@ -31,13 +33,16 @@ export class VideoPageComponent implements OnInit {
           title: videoData.title,
           description: videoData.description,
           videoUrl: videoData.videoUrl,
-          screenshotUrl: videoData.screenshotUrl
+          screenshotUrl: videoData.screenshotUrl,
+          duration: videoData.duration
         };
-
-        console.log(videoData);
         
+        console.log(videoData.videoUrl);
+        const fullVideoUrl = `https://iframe.mediadelivery.net/embed/268369/${videoData.videoUrl}?autoplay=false&loop=false&muted=false&preload=true&responsive=true`;
+
+        this.videoUrlSanitized = this.sanitizer.bypassSecurityTrustResourceUrl(fullVideoUrl);
+
         this.authService.getUserFavourites()?.includes(this.videoDataObj._id) ? this.isFavourite = true : this.isFavourite = false;
-        console.log(this.isFavourite);
         
         videoData.hasOwnProperty('previous') ? this.previousVideo = videoData.previous : this.previousVideo = undefined;
         videoData.hasOwnProperty('next') ? this.nextVideo = videoData.next : this.nextVideo = undefined;

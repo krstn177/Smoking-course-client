@@ -8,8 +8,11 @@ import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/cor
 export class LandingComponent implements AfterViewInit{
   private secondVideo: HTMLVideoElement | null = null;
   public videoPlayed = false;
+  public isLoggedIn: boolean = false;
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) {
+    this.isLoggedIn = !!localStorage.getItem('accessToken');
+  }
 
   ngAfterViewInit(): void {
     this.secondVideo = this.elementRef.nativeElement.querySelectorAll('video')[1];

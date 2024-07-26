@@ -1,22 +1,24 @@
 <div class="bg-darker-green w-full py-16 min-h-screen xl:px-8 px-4">
     <div class="md:gap-5 flex lg:flex-row flex-col lg:m-0 sm:mx-5 align-middle lg:justify-center">
         <div [ngClass]="{'lg:w-full': !previousVideo && !nextVideo}" class="lg:w-10/12 w-full">
-            <div class="lg:max-w-[70vw] mx-auto aspect-video w-full rounded-xl bg-beige">
-                Yo
+            <div class="lg:max-w-[70vw] mx-auto overflow-hidden aspect-video w-full rounded-xl bg-beige">
+                <div style="position:relative;padding-top:56.25%;">
+                    <iframe [src]="videoUrlSanitized" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+                </div>
             </div>
             <div class="flex justify-between w-full my-5 px-3 lg:max-w-[70vw] mx-auto">
                 <h1 class="text-darker-blue text-2xl font-extrabold align-middle">{{videoDataObj?.title}}</h1>
                 <div class="flex flex-row">
-                    <p class="text-darker-green text-xl font-bold mr-2 text-center hidden sm:inline">Добави към любими</p>
+                    <p class="text-beige text-xl font-bold mr-2 text-center hidden sm:inline">Добави към любими</p>
                     <button (click)="toggleFavourite($event)" class="pb-4">
-                        <svg *ngIf="(!isFavourite && !loadingFavourite)" class="duration-100 hover:-translate-y-2 text-center" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#41B06E" stroke-width="1.5" width="30" height="30" viewBox="0 0 20.923 20">
+                        <svg *ngIf="(!isFavourite && !loadingFavourite)" class="duration-100 hover:-translate-y-2 text-center" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#8DECB4" stroke-width="1.5" width="30" height="30" viewBox="0 0 20.923 20">
                           <path data-name="Path 1905" d="m334.737 27.228 2.306 4.672a.431.431 0 0 0 .324.235l5.156.749a.43.43 0 0 1 .238.734l-3.731 3.636a.43.43 0 0 0-.124.381l.881 5.135a.43.43 0 0 1-.624.453l-4.612-2.423a.43.43 0 0 0-.4 0l-4.611 2.424a.43.43 0 0 1-.624-.453l.881-5.135a.43.43 0 0 0-.124-.381l-3.731-3.636a.43.43 0 0 1 .238-.734l5.156-.749a.43.43 0 0 0 .324-.235l2.306-4.672a.43.43 0 0 1 .771-.001z" transform="translate(-325.303 -26.488)"></path>
                         </svg>
                         <svg *ngIf="(isFavourite && !loadingFavourite)" class="duration-100 hover:-translate-y-2 text-center" xmlns="http://www.w3.org/2000/svg" fill="#fcc822" stroke="#fcc822" stroke-width="1.5" width="30" height="30" viewBox="0 0 20.923 20">
                           <path data-name="Path 1905" d="m334.737 27.228 2.306 4.672a.431.431 0 0 0 .324.235l5.156.749a.43.43 0 0 1 .238.734l-3.731 3.636a.43.43 0 0 0-.124.381l.881 5.135a.43.43 0 0 1-.624.453l-4.612-2.423a.43.43 0 0 0-.4 0l-4.611 2.424a.43.43 0 0 1-.624-.453l.881-5.135a.43.43 0 0 0-.124-.381l-3.731-3.636a.43.43 0 0 1 .238-.734l5.156-.749a.43.43 0 0 0 .324-.235l2.306-4.672a.43.43 0 0 1 .771-.001z" transform="translate(-325.303 -26.488)"></path>
                         </svg>
                         <div *ngIf="loadingFavourite" class="w-[30px] h-[30px]">
-                          <div class="fas fa-circle-notch fa-spin text-center fa-2x text-darker-green"></div>
+                          <div class="fas fa-circle-notch fa-spin text-center fa-2x text-lighter-green"></div>
                         </div>
                     </button>
                 </div>
@@ -25,14 +27,24 @@
                 <p>{{videoDataObj?.description}}</p>
             </div>
         </div>
-        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 rounded-xl md:bg-beige">
-            <h2 class="md:text-darker-green text-beige text-2xl font-bold text-center mb-4">Предишен:</h2>
-            <div class="md:px-8 mb-4">
-                <app-video-card [videoInfo]="previousVideo"></app-video-card>
+        <div *ngIf="previousVideo || nextVideo" class="lg:w-1/4 md:w-3/5 w-4/5 mx-auto py-5 rounded-xl md:bg-beige flex flex-col justify-around">
+            <div *ngIf="previousVideo">
+                <h2 class="md:text-darker-green text-beige text-2xl font-bold text-center mb-4">Предишен:</h2>
+                <div class="md:px-8 mb-4">
+                    <app-video-card [videoInfo]="previousVideo"></app-video-card>
+                </div>
             </div>
-            <h2 class="md:text-darker-green text-beige text-2xl font-bold text-center mb-4">Следващ:</h2>
-            <div class="md:px-8">
-                <app-video-card [videoInfo]="nextVideo"></app-video-card>
+            <div *ngIf="nextVideo">
+                <h2 class="md:text-darker-green text-beige text-2xl font-bold text-center mb-4">Следващ:</h2>
+                <div class="md:px-8">
+                    <app-video-card [videoInfo]="nextVideo"></app-video-card>
+                </div>
+            </div>
+            <div *ngIf="!previousVideo || !nextVideo" class="w-full">
+                <div class="w-3/4 mx-auto">
+                    <img src="assets/Course-logo.png" alt="Course Logo" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-4xl text-darker-blue font-extrabold text-center">БЕЗ ЦИГАРЕН ДИМ</h3>
             </div>
         </div>
     </div>

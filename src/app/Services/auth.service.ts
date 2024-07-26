@@ -114,10 +114,8 @@ export class AuthService {
   }
 
   toggleFavouriteVideo(videoId: string): void {
-    console.log(this.userFavourites);
     if (this.userFavourites?.includes(videoId)) {
       this.userFavourites = this.userFavourites?.filter(video => video !== videoId);
-      console.log(this.userFavourites);
       localStorage.setItem('favourites', this.userFavourites?.join(' '));
     }
     else {

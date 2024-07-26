@@ -13,13 +13,17 @@ import { LandingComponent } from './landing/landing.component';
 import { OrdersModule } from './orders/orders.module';
 import { FooterComponent } from './footer/footer.component';
 import { FaqModuleComponent } from './faq-module/faq-module.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     LandingComponent,
-    FaqModuleComponent
+    FaqModuleComponent,
+    NotFoundComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -23,11 +23,9 @@ export class VideosListComponent implements OnInit {
       next: (videos) =>{
         this.initialVideos = videos;
         this.videos = videos;
-        console.log(videos)
         this.loaderService.hideLoader();
       },
       error: (error) =>{
-        console.log(error);
         this.loaderService.hideLoader();
       }
     });

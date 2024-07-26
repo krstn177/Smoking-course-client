@@ -4,7 +4,7 @@
       <app-alert *ngIf="showAlert" [color]="alertColor">
         {{  alertMsg  }}
       </app-alert>
-      <form [formGroup]="registerForm" (ngSubmit)="register()" class="bg-beige shadow-xl rounded-3xl px-8 pt-6 pb-8 mb-4">
+      <form [formGroup]="registerForm" (ngSubmit)="captchaRef.execute()" class="bg-beige shadow-xl rounded-3xl px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
           <label class="block text-darker-blue text-base font-bold mb-2" for="email">
             Email
@@ -75,11 +75,13 @@
               placeholder="Повтори парола"
               type="password"
             ></app-input> 
-          </div>
+        </div>
+        <re-captcha #captchaRef size="invisible" (resolved)="$event && captchaExecute($event)" siteKey="6LdjVRcqAAAAAPFXyB1OByj80mGV1vbM3QI6gRZq"></re-captcha>
         <div class="flex items-center justify-between">
           <button 
           class="bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" 
           type="submit"
+          [ngClass]="{'bg-slate-600 text-white hover:bg-slate-400 hover:text-white disabled': this.inSubmission}"
           [disabled]="registerForm.invalid || inSubmission"
           >
             Регистрирай се

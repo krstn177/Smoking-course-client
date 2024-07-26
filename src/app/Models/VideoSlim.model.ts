@@ -3,4 +3,5 @@ export default interface IVideoSlim {
     title: string;
     description: string;
     screenshotUrl: string;
+    duration: string;
 }

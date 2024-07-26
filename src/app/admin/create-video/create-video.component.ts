@@ -44,6 +44,12 @@ export class CreateVideoComponent {
         Validators.minLength(3)
       ]
     }),
+    duration: new FormControl('',{
+      validators: [
+        Validators.required,
+        Validators.minLength(4)
+      ]
+    }),
     previous: new FormControl('',{
       validators: [
         Validators.minLength(3)
