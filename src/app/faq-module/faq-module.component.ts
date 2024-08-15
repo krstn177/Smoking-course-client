@@ -11,15 +11,16 @@ export class FaqModuleComponent implements AfterViewInit, OnDestroy{
   @Input() description: string = '';
   @Input() videoName: string = '';
   @Input() reversed: boolean = false;
+  @Input() isLoggedIn: boolean = false;
+  @Input() hasOrdered: boolean = false;
+  @Input() roles: string[] = [];
 
   private video: HTMLVideoElement | null = null;
   public videoPlayed: boolean = false;
   private observer: IntersectionObserver | null = null;
 
-  public isLoggedIn: boolean = false;
 
   constructor(private elementRef: ElementRef) {
-    this.isLoggedIn = !!localStorage.getItem('accessToken');
   }
 
   ngAfterViewInit(): void {

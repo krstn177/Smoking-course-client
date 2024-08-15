@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core';
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-landing',
@@ -9,9 +10,20 @@ export class LandingComponent implements AfterViewInit{
   private secondVideo: HTMLVideoElement | null = null;
   public videoPlayed = false;
   public isLoggedIn: boolean = false;
+  public hasOrdered: boolean = false;
+  public roles: string[] = [];
 
-  constructor(private elementRef: ElementRef) {
-    this.isLoggedIn = !!localStorage.getItem('accessToken');
+  constructor(private elementRef: ElementRef, private authService: AuthService) {
+    this.authService.user$.subscribe(user => {
+      if (user) {
+        this.isLoggedIn = true;
+        this.roles = user.roles
+        user.hasOrdered == undefined ? this.hasOrdered = false : this.hasOrdered = user.hasOrdered;
+      } else{
+        this.isLoggedIn = false;
+        this.hasOrdered = false;
+      }
+    });
   }
 
   ngAfterViewInit(): void {

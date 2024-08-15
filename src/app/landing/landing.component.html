@@ -12,15 +12,21 @@
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center xl:justify-start">
             <div class="rounded-md shadow">
-              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                 Влез в курса
               </a>
-              <a *ngIf="isLoggedIn" routerLink="/videos" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                Поръчай курса
+              </a>
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                Активирай курса
+              </a>
+              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                 Към клиповете
               </a>
             </div>
             <div class="mt-3 sm:mt-0 sm:ml-3">
-              <a routerLink="/about" class="w-full flex items-center justify-center hover:cursor-pointer px-8 py-3 border border-transparent text-lg font-medium rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-2xl md:px-10">
+              <a routerLink="/about" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-3xl md:px-10">
                 Научете повече
               </a>
             </div>
@@ -90,33 +96,28 @@
     <h2 class="text-center font-extrabold text-6xl py-8 text-beige bg-darker-green">Често задавани въпроси</h2>
 
     <app-faq-module
-      titleQuestionSpan1="Защо да спра"
-      titleQuestionSpan2="пушенето?"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Duis in tellus bibendum, viverra urna non, tincidunt ex. 
-      Nam ac nulla felis. Vestibulum ante ipsum primis in faucibus orci luctus 
-      et ultrices posuere cubilia curae; Nullam ut lorem id elit iaculis pulvinar. 
-      Donec sapien neque, rhoncus ac metus non, vehicula pellentesque mi. In sit amet ligula ex. 
-      Pellentesque luctus pulvinar scelerisque. Praesent lacinia consectetur nibh vel tincidunt. 
-      Vestibulum et elementum turpis, quis tempor mi. Vivamus ultricies neque in lectus varius, 
-      non commodo odio malesuada."
+      titleQuestionSpan1="Какво представлява"
+      titleQuestionSpan2="курсът?"
+      description="Курсът е съставен от 27 видео клипа. Те са с различна продължителност като общото им времетраене е над три часа концентрирано съдържание, включващo образователна, обучителна част и такава със стратегия за самото спиране на цигарите."
       videoName="Why-Video.mp4"
       [reversed]=false
+      [isLoggedIn]="isLoggedIn"
+      [hasOrdered]="hasOrdered"
+      [roles]="roles"
     ></app-faq-module>
     
     <app-faq-module
       titleQuestionSpan1="Как ще ми помогне"
       titleQuestionSpan2="този курс?"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Duis in tellus bibendum, viverra urna non, tincidunt ex. 
-      Nam ac nulla felis. Vestibulum ante ipsum primis in faucibus orci luctus 
-      et ultrices posuere cubilia curae; Nullam ut lorem id elit iaculis pulvinar. 
-      Donec sapien neque, rhoncus ac metus non, vehicula pellentesque mi. In sit amet ligula ex. 
-      Pellentesque luctus pulvinar scelerisque. Praesent lacinia consectetur nibh vel tincidunt. 
-      Vestibulum et elementum turpis, quis tempor mi. Vivamus ultricies neque in lectus varius, 
-      non commodo odio malesuada."
+      description="Като те научи как да станеш по-осъзнат и по-мотивиран.
+      Помогне да изкорениш някои грешни представи и ти отвори очите за някои самозаблуждения.
+      Повиши волята и самоконтрола.
+      Изградиш здравословни навици, които да те направят по-здрав и силен, и когато това се случи да откажеш пушенето от раз."
       videoName="Idea-Video(1).mp4"
       [reversed]=true
+      [isLoggedIn]="isLoggedIn"
+      [hasOrdered]="hasOrdered"
+      [roles]="roles"
     ></app-faq-module>
 
     <div class="bg-darker-green py-2">
@@ -136,7 +137,7 @@
                   <span class="block text-lighter-green">Мъдрости от Пепелта</span>
                 </h2>
                 <p class="mt-3 text-center text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum blanditiis nam voluptas nobis voluptatum, qui a adipisci quia id nesciunt eaque tempora tenetur quam aut sapiente iure voluptate pariatur quisquam!
+                  Тя съдържа вдъхновяващи сентенции за живота, които биха ви помогнали в трудните и предизвикателни моменти през процеса на спиране на цигарите, като ви накара да се почувствате по-спокойни и уверени в собствените си сили, че ще се справите с проблема.
                 </p>
                 <div class="mt-5 sm:mt-8 mx-auto">
                   <div class="rounded-md shadow">
@@ -169,7 +170,7 @@
                   <span class="block text-lighter-green">Антистрес дневник</span>
                 </h2>
                 <p class="mt-3 text-center text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum blanditiis nam voluptas nobis voluptatum, qui a adipisci quia id nesciunt eaque tempora tenetur quam aut sapiente iure voluptate pariatur quisquam!
+                  Това реално са два продукта, с които се гордеем много. Те са наше творение, чиято цел е да помогнат на човек да си стъпи на краката и освободи от излишния стрес.
                 </p>
               </div>
               <div class="xl:mt-0 xl:w-1/2 min-w-[400px] max-w-[500px] overflow-hidden rounded-2xl p-1 bg-gradient-to-t xl:bg-gradient-to-r from-darker-green to-darker-blue">
@@ -180,7 +181,7 @@
       </div>
     </div>
 
-    <div class="bg-darker-green">
+    <!-- <div class="bg-darker-green">
       <div class="bg-darker-green py-8">
         <div class="mx-auto shadow-2xl xl:max-w-7xl max-w-4xl overflow-hidden bg-darker-blue my-2 rounded-3xl pt-5 xl:pr-12 xl:pt-0 xl:pl-0 xl:pb-0">
             <div class="flex flex-col justify-between xl:flex-row-reverse items-center xl:items-start xl:gap-6">
@@ -206,7 +207,7 @@
             </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="bg-darker-green py-2">
       <hr class="w-full md:w-[90%] h-[3px] mx-auto border-0 rounded bg-beige">

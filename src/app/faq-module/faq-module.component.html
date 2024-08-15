@@ -14,7 +14,13 @@
               <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                 Влез в курса
               </a>
-              <a *ngIf="isLoggedIn" routerLink="/videos" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                Поръчай курса
+              </a>
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                Активирай курса
+              </a>
+              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                 Към клиповете
               </a>
             </div>

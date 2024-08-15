@@ -80,7 +80,7 @@ export class OrderComponent implements OnInit {
         this.loaderService.hideLoader();
         setTimeout(() => {
           this.router.navigateByUrl('orders/redeem-code');
-        }, 5000)
+        }, 10000)
       },
       error: (err) => {
         this.loaderService.hideLoader();
