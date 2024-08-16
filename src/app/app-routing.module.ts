@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
+import { PersonalInfoRulesComponent } from './personal-info-rules/personal-info-rules.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   {
@@ -28,6 +30,14 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'personal-info-rules',
+    component: PersonalInfoRulesComponent
+  },
+  {
+    path: 'terms',
+    component: TermsComponent
   },
   {
     path: '**',

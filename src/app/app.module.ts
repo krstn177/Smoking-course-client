@@ -15,6 +15,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FaqModuleComponent } from './faq-module/faq-module.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
+import { PersonalInfoRulesComponent } from './personal-info-rules/personal-info-rules.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,10 @@ import { AboutComponent } from './about/about.component';
     LandingComponent,
     FaqModuleComponent,
     NotFoundComponent,
-    AboutComponent
+    AboutComponent,
+    PersonalInfoRulesComponent,
+    TermsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +37,7 @@ import { AboutComponent } from './about/about.component';
     UserModule,
     SharedModule,
     AdminModule,
-    OrdersModule,
-    FooterComponent
+    OrdersModule
   ],
   providers: [
     {

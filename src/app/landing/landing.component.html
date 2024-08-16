@@ -1,41 +1,44 @@
 <div class="bg-beige">
   <div class="bg-darker-green py-12">
     <main class="mx-auto xl:max-w-[1720px] max-w-4xl shadow-md p-4 sm:px-6 lg:p-8 bg-gradient-to-t xl:bg-gradient-to-r from-darker-blue from-55% via-darker-green to-lighter-green rounded-3xl">
-      <div class="flex flex-col-reverse justify-center gap-6 xl:gap-0 xl:flex-row items-center xl:items-start">
+      <div class="flex flex-col-reverse justify-center gap-6 xl:flex-row items-center xl:items-start">
         <div class="xl:w-[40%]">
           <h1 class="text-4xl text-center xl:text-left tracking-tight font-extrabold text-beige sm:text-5xl md:text-6xl">
             <span class="block mr-3">Добре дошли в</span>
             <span class="block text-lighter-green">Без цигарен дим</span>
           </h1>
           <p class="mt-3 text-center xl:text-left text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quaerat quam enim eligendi mollitia iure nemo illo minus voluptatem consequuntur quia dolorem commodi velit ullam reiciendis consectetur, illum corporis in? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea saepe nam debitis rerum fugiat tenetur corporis nesciunt aperiam eius neque alias magni, nobis ullam.
+            Това е мястото, от което ще почерпите сила, знание и вдъхновение да направите от живота си храм, от който молитвите ви за щастие ще се сбъднат. Ще успеете да оставите зад гърба си вредния навик да пушете и започнете да цените повече вашето здраве и това на близките ви.   
+            Наистина звучи като гръмки обещания, които обаче вярвам, че с вашите усилия и нашата подкрепа ще се превърнат в реалност. 
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center xl:justify-start">
             <div class="rounded-md shadow">
-              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Влез в курса
               </a>
-              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Поръчай курса
               </a>
-              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Активирай курса
               </a>
-              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Към клиповете
               </a>
             </div>
             <div class="mt-3 sm:mt-0 sm:ml-3">
-              <a routerLink="/about" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-3xl md:px-10">
+              <a routerLink="/about" class="w-full flex items-center justify-center hover:cursor-pointer px-8 py-3 border border-transparent text-lg font-medium rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-2xl md:px-10">
                 Научете повече
               </a>
             </div>
           </div>
         </div>
-        <div class="mt-8 shadow-md border-dotted border-2 border-darker-blue xl:mt-0 xl:w-[40%] max-w-[580px] rounded-2xl overflow-hidden">
-          <video autoplay class="w-full aspect-[4/3] object-cover" [muted]="true">
-            <source src="assets/Hero-Video.mp4" type="video/mp4">
-          </video>
+        <div class="flex items-center min-h-[470px] xl:w-[40%] max-w-[580px]">
+          <div class="my-auto shadow-md border-dotted border-2 border-darker-blue w-full rounded-2xl overflow-hidden">
+            <video autoplay class="w-full aspect-[4/3] object-cover" [muted]="true">
+              <source src="assets/Hero-Video.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
       </div>
     </main>

@@ -10,7 +10,7 @@
   </div>
   <div class="p-4">
       <div class="text-2xl font-bold text-darker-blue text-center mb-2">{{videoInfo?.title}}</div>
-      <p class="text-darker-green text-base text-center">{{videoInfo?.description}}</p>
+      <p class="text-darker-green text-base text-center line-clamp-2">{{videoInfo?.description}}</p>
   </div>
   <button (click)="toggleFavourite($event)" class="pb-4 block mx-auto">
     <svg *ngIf="(!isFavourite && !loadingFavourite)" class="duration-100 hover:-translate-y-2 text-center" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#41B06E" stroke-width="1.5" width="38" height="38" viewBox="0 0 20.923 20">
