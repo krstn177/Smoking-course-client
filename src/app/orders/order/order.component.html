@@ -60,7 +60,7 @@
                     <app-input [control]="orderForm.controls.address" placeholder="Въведи Адрес" type="text"></app-input>
                 </div>       
             </div>
-            <button [disabled]="orderForm.invalid" class="font-bold bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green rounded-lg text-sm px-5 py-2.5 text-center">
+            <button [disabled]="orderForm.invalid" class="font-bold transition-colors duration-300 bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green rounded-lg text-sm px-5 py-2.5 text-center">
                 Напред
             </button>
         </form>
@@ -112,12 +112,12 @@
                 </div>
             </div>
             <div class="w-full flex justify-around gap-3">
-                <button (click)="onBack()" class="bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green min-w-[100px] md:min-w-[200px] focus:ring-4 focus:outline-none font-medium rounded-lg py-2.5 flex justify-center">
+                <button (click)="onBack()" class="bg-darker-green transition-colors duration-300 hover:bg-darker-blue text-beige hover:text-darker-green min-w-[100px] md:min-w-[200px] focus:ring-4 focus:outline-none font-medium rounded-lg py-2.5 flex justify-center">
                     <div class="text-sm font-bold">
                         Назад
                     </div>
                 </button>
-                <button (click)="onSubmit()" class="bg-darker-green hover:bg-darker-blue text-beige hover:text-darker-green min-w-[100px] md:min-w-[200px] focus:ring-4 focus:outline-none font-medium rounded-lg py-2.5 flex justify-center">
+                <button (click)="onSubmit()" class="bg-darker-green transition-colors duration-300 hover:bg-darker-blue text-beige hover:text-darker-green min-w-[100px] md:min-w-[200px] focus:ring-4 focus:outline-none font-medium rounded-lg py-2.5 flex justify-center">
                     <div class="text-sm font-bold">
                         Поръчай
                     </div>

@@ -13,21 +13,21 @@
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center xl:justify-start">
             <div class="rounded-md shadow">
-              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Влез в курса
               </a>
-              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Поръчай курса
               </a>
-              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Активирай курса
               </a>
-              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Към клиповете
               </a>
             </div>
             <div class="mt-3 sm:mt-0 sm:ml-3">
-              <a routerLink="/about" class="w-full flex items-center justify-center hover:cursor-pointer px-8 py-3 border border-transparent text-lg font-medium rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-2xl md:px-10">
+              <a routerLink="/about" class="w-full flex items-center transition-colors duration-300 justify-center hover:cursor-pointer px-8 py-3 border border-transparent text-lg font-medium rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-2xl md:px-10">
                 Научете повече
               </a>
             </div>
@@ -132,7 +132,7 @@
 
     <div class="bg-darker-green">
       <div class="bg-darker-green py-8">
-        <div class="mx-auto shadow-2xl xl:max-w-7xl max-w-4xl overflow-hidden bg-darker-blue my-2 rounded-3xl pb-5 xl:pl-12 xl:pt-0 xl:pr-0 xl:pb-0">
+        <div class="mx-auto shadow-md xl:max-w-7xl max-w-4xl overflow-hidden bg-darker-blue my-2 rounded-3xl pb-5 xl:pl-12 xl:pt-0 xl:pr-0 xl:pb-0">
             <div class="flex flex-col-reverse justify-between xl:flex-row items-center xl:items-start xl:gap-6">
               <div class="my-auto">
                 <h2 class="text-3xl text-center tracking-tight font-extrabold text-beige sm:text-4xl md:text-5xl">
@@ -144,7 +144,7 @@
                 </p>
                 <div class="mt-5 sm:mt-8 mx-auto">
                   <div class="rounded-md shadow">
-                    <a href="https://k-kostadinov.store/" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                    <a href="https://k-kostadinov.store/" class="w-full transition-colors duration-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                       Виж книгата
                     </a>
                   </div>
@@ -160,7 +160,7 @@
 
     <div class="bg-darker-green">
       <div class="bg-darker-green py-8">
-        <div class="mx-auto shadow-2xl xl:max-w-[1700px] max-w-4xl overflow-hidden my-2 rounded-3xl pb-5 bg-gradient-to-t xl:bg-gradient-to-r from-lighter-green via-darker-blue to-lighter-green">
+        <div class="mx-auto shadow-md xl:max-w-[1700px] max-w-4xl overflow-hidden my-2 rounded-3xl pb-5 bg-gradient-to-t xl:bg-gradient-to-r from-lighter-green via-darker-blue to-lighter-green">
             <div class="flex flex-col-reverse gap-4 xl:flex-row justify-center items-center xl:items-center xl:gap-6 py-8">
               <div class="xl:mt-0 xl:w-1/2 min-w-[400px] max-w-[500px] overflow-hidden rounded-2xl p-1 bg-gradient-to-t xl:bg-gradient-to-r from-darker-blue to-darker-green">
                 <img class="w-full h-full rounded-2xl object-cover" src="assets/guided-therapy.png" alt="Book Image">
@@ -184,33 +184,35 @@
       </div>
     </div>
 
-    <!-- <div class="bg-darker-green">
+    <div class="bg-darker-green">
       <div class="bg-darker-green py-8">
-        <div class="mx-auto shadow-2xl xl:max-w-7xl max-w-4xl overflow-hidden bg-darker-blue my-2 rounded-3xl pt-5 xl:pr-12 xl:pt-0 xl:pl-0 xl:pb-0">
-            <div class="flex flex-col justify-between xl:flex-row-reverse items-center xl:items-start xl:gap-6">
-              <div class="my-auto">
+        <div class="mx-auto shadow-md xl:max-w-7xl max-w-4xl overflow-hidden bg-darker-blue my-2 rounded-3xl pt-5 xl:pr-12 xl:pt-0 xl:pl-0 xl:pb-0">
+            <div class="flex flex-col justify-between pt-10 xl:pt-0 xl:flex-row-reverse items-center xl:items-start xl:gap-6">
+              <div class="my-auto w-3/4 xl:w-1/2">
                 <h2 class="text-3xl text-center tracking-tight font-extrabold text-beige sm:text-4xl md:text-5xl">
                   <span class="block">Подарък към курса</span>
-                  <span class="block text-lighter-green">Мъдрости от Пепелта</span>
+                  <span class="block text-lighter-green">Мотивационни карти</span>
                 </h2>
                 <p class="mt-3 text-center text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum blanditiis nam voluptas nobis voluptatum, qui a adipisci quia id nesciunt eaque tempora tenetur quam aut sapiente iure voluptate pariatur quisquam!
                 </p>
                 <div class="mt-5 sm:mt-8 mx-auto">
                   <div class="rounded-md shadow">
-                    <a href="https://k-kostadinov.store/" target="_blank" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
-                      Виж книгата
+                    <a href="https://k-kostadinov.store/" target="_blank" class="w-full transition-colors duration-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                      Виж картите
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="xl:mt-0 xl:w-1/2 min-w-[700px] max-w-[900px] overflow-hidden bg-gradient-to-t xl:bg-gradient-to-r from-lighter-green via-darker-green to-darker-blue">
-                <img class="w-full h-full object-cover" src="assets/BookImage.png" alt="Book Image">
+              <div class="w-full xl:w-3/4 flex justify-center overflow-hidden bg-gradient-to-t xl:bg-gradient-to-r from-lighter-green via-darker-green to-darker-blue">
+                <div class="xl:mt-0 w-[600px] overflow-hidden">
+                  <img class="w-full h-full object-cover" src="assets/Transparent-cardbox.png" alt="Book Image">
+                </div>
               </div>
             </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <div class="bg-darker-green py-2">
       <hr class="w-full md:w-[90%] h-[3px] mx-auto border-0 rounded bg-beige">

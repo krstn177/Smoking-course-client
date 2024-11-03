@@ -13,19 +13,19 @@
       <div [ngClass]="isHiddenMenu" class="w-full md:block md:w-auto" id="navbar-multi-level">
         <ul class="flex flex-col font-medium py-3 px-8 md:py-2 md:px-4 mt-4 border rounded-xl text-darker-blue bg-darker-green md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
           <li>
-            <a routerLink="/" [ngClass]="{'text-beige': this.router.url == '/'}" class="block py-2 px-5 text-xl font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Начало</a>
+            <a routerLink="/" [ngClass]="{'text-beige': this.router.url == '/'}" class="block transition-colors duration-200 py-2 px-5 text-xl font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Начало</a>
           </li>
           <li *ngIf="user && user.hasOrdered == false && (!user.roles.includes('activated') && !user.roles.includes('admin'))">
-            <a routerLink="/orders/make-order" [ngClass]="{'text-beige': this.router.url == '/orders/make-order'}" class="block py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Поръчай курса</a>
+            <a routerLink="/orders/make-order" [ngClass]="{'text-beige': this.router.url == '/orders/make-order'}" class="block transition-colors duration-200 py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Поръчай курса</a>
           </li>
           <li *ngIf="user && user.hasOrdered == true && (!user.roles.includes('activated') && !user.roles.includes('admin'))">
-            <a routerLink="/orders/redeem-code" class="block py-2 px-3 text-xl font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Активирай акаунт</a>
+            <a routerLink="/orders/redeem-code" [ngClass]="{'text-beige': this.router.url == '/orders/redeem-code'}" class="block transition-colors duration-200 py-2 px-3 text-xl font-bold rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Активирай акаунт</a>
           </li>
           <li *ngIf="user && (user.roles.includes('activated') || user.roles.includes('admin'))">
-            <a routerLink="/videos" [ngClass]="{'text-beige': this.router.url == '/videos'}" class="block py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Клипове</a>
+            <a routerLink="/videos" [ngClass]="{'text-beige': this.router.url == '/videos'}" class="block transition-colors duration-200 py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green" aria-current="page">Клипове</a>
           </li>
           <li *ngIf="user && user.roles.includes('admin')">
-              <button (click)="toggleDropdown()" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex font-bold items-center text-xl justify-between w-full py-2 px-5 hover:bg-darker-green md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0 md:w-auto">АДМИН 
+              <button (click)="toggleDropdown()" id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex transition-colors duration-200 font-bold items-center text-xl justify-between w-full py-2 px-5 hover:bg-darker-green md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0 md:w-auto">АДМИН 
                 <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                 </svg>
@@ -34,22 +34,22 @@
               <div id="dropdownNavbar" [ngClass]="isHiddenDropdown" class="z-10 absolute font-normal bg-darker-green divide-y divide-gray-100 rounded-lg shadow w-44 ">
                   <ul class="py-2 text-sm text-darker-blue" aria-labelledby="dropdownLargeButton">
                     <li>
-                      <a routerLink="admin/create-video" [ngClass]="{'text-beige': this.router.url == '/admin/create-video'}" class="block font-bold text-xl px-4 py-2 hover:text-beige">Създай</a>
+                      <a routerLink="admin/create-video" [ngClass]="{'text-beige': this.router.url == '/admin/create-video'}" class="block transition-colors duration-200 font-bold text-xl px-4 py-2 hover:text-beige">Създай</a>
                     </li>
                   </ul>
               </div>
           </li>
           <li>
-            <a routerLink="/about" [ngClass]="{'text-beige': this.router.url == '/about'}" class="block py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:cursor-pointer hover:text-beige hover:bg-lighter-green">За курса</a>
+            <a routerLink="/about" [ngClass]="{'text-beige': this.router.url == '/about'}" class="block transition-colors duration-200 py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:cursor-pointer hover:text-beige hover:bg-lighter-green">За курса</a>
           </li>
           <li *ngIf="!user">
-            <a routerLink="/user/login" [ngClass]="{'text-beige': this.router.url == '/user/login'}" class="block py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Влез</a>
+            <a routerLink="/user/login" [ngClass]="{'text-beige': this.router.url == '/user/login'}" class="block transition-colors duration-200 py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Влез</a>
           </li>
           <li *ngIf="!user">
-            <a routerLink="/user/register" [ngClass]="{'text-beige': this.router.url == '/user/register'}" class="block py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Регистрация</a>
+            <a routerLink="/user/register" [ngClass]="{'text-beige': this.router.url == '/user/register'}" class="block transition-colors duration-200 py-2 px-5 font-bold text-xl rounded-full md:hover:bg-transparent md:p-0 hover:text-beige hover:bg-lighter-green">Регистрация</a>
           </li>
           <li *ngIf="user">
-            <a (click)="signOut()" class="block cursor-pointer text-xl font-bold py-2 px-5 rounded-full md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0 hover:text-beige hover:bg-lighter-green">Изход</a>
+            <a (click)="signOut()" class="block transition-colors duration-200 cursor-pointer text-xl font-bold py-2 px-5 rounded-full md:hover:bg-transparent md:border-0 md:hover:text-beige md:p-0 hover:text-beige hover:bg-lighter-green">Изход</a>
           </li>
         </ul>
       </div>
