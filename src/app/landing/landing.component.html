@@ -7,27 +7,28 @@
             <span class="block mr-3">Добре дошли в</span>
             <span class="block text-lighter-green">Без цигарен дим</span>
           </h1>
-          <p class="mt-3 text-center xl:text-left text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-            Това е мястото, от което ще почерпите сила, знание и вдъхновение да направите от живота си храм, от който молитвите ви за щастие ще се сбъднат. Ще успеете да оставите зад гърба си вредния навик да пушете и започнете да цените повече вашето здраве и това на близките ви.   
-            Наистина звучи като гръмки обещания, които обаче вярвам, че с вашите усилия и нашата подкрепа ще се превърнат в реалност. 
+          <p class="mt-3 text-center xl:text-left text-beige font-bold sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 sm:text-2xl text-xl xl:mx-0">
+            Тук започва вашето пътуване към живот без цигари. В нашия онлайн курс ще получите
+            практически знания и стратегии, които ще ви помогнат да се освободите от тютюнопушенето
+            завинаги. Присъединете се към нас и направете първата стъпка към по-здравословен начин на живот.
           </p>
           <div class="mt-5 sm:mt-8 sm:flex sm:justify-center xl:justify-start">
             <div class="rounded-md shadow">
-              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="!isLoggedIn" routerLink="/user/login" class="w-full uppercase transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-2xl font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Влез в курса
               </a>
-              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && !hasOrdered" routerLink="/orders/make-order" class="w-full uppercase transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-2xl font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Поръчай курса
               </a>
-              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && !roles.includes('activated') && hasOrdered" routerLink="/orders/redeem-code" class="w-full uppercase transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-2xl font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Активирай курса
               </a>
-              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-lg font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
+              <a *ngIf="isLoggedIn && roles.includes('activated')" routerLink="/videos" class="w-full uppercase transition-colors duration-300 hover:cursor-pointer flex items-center justify-center px-8 py-3 border border-transparent text-2xl font-medium rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-2xl md:px-10">
                 Към клиповете
               </a>
             </div>
             <div class="mt-3 sm:mt-0 sm:ml-3">
-              <a routerLink="/about" class="w-full flex items-center transition-colors duration-300 justify-center hover:cursor-pointer px-8 py-3 border border-transparent text-lg font-medium rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-2xl md:px-10">
+              <a routerLink="/about" class="w-full uppercase flex items-center transition-colors duration-300 justify-center hover:cursor-pointer px-8 py-3 border border-transparent text-2xl font-medium rounded-md text-darker-green bg-green-100 hover:bg-lighter-green hover:text-darker-blue md:py-4 md:text-2xl md:px-10">
                 Научете повече
               </a>
             </div>
@@ -49,43 +50,49 @@
   </div>
 
   <div class="py-2 bg-darker-green">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8">
           <div class="md:text-center">
             <h2 class="text-base text-darker-blue font-semibold tracking-wide uppercase">БЕЗ ЦИГАРЕН ДИМ</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-beige sm:text-4xl">Всичко, което трябва да знаете</p>
-            <p class="mt-4 max-w-2xl text-xl text-darker-blue lg:mx-auto font-bold">Ето как протича процеса на покупка и получаване на достъп до съдържанието.</p>
+            <p class="mt-2 uppercase text-4xl leading-8 font-extrabold tracking-tight text-beige sm:text-5xl">Всичко, което трябва да знаете</p>
+            <p class="mt-4 max-w-2xl text-2xl text-darker-blue sm:mx-auto font-bold">Ето как протича процеса на покупка и получаване на достъп до съдържанието.</p>
           </div>
 
           <div class="mt-10">
-            <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+            <dl class="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10 md:w-[70%] md:mx-auto lg:w-full">
                 <div class="relative bg-beige rounded-xl p-3">
-                  <dt>
-                      <div class="absolute flex items-center justify-center border-2 border-darker-blue h-12 w-12 rounded-xl bg-beige text-beige">
-                        <svg height="24px" width="24px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#141E46"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#141E46;} </style> <g> <polygon class="st0" points="374.107,448.835 34.01,448.835 34.01,194.102 164.947,194.102 164.947,63.165 374.107,63.165 374.107,96.698 408.117,64.049 408.117,29.155 164.947,29.155 34.01,160.092 0,194.102 0,482.845 408.117,482.845 408.117,282.596 374.107,318.034 "></polygon> <path class="st0" d="M508.609,118.774l-51.325-51.325c-4.521-4.522-11.852-4.522-16.372,0L224.216,275.561 c-1.344,1.344-2.336,2.998-2.889,4.815l-26.21,86.117c-2.697,8.861,5.586,17.144,14.447,14.447l88.886-27.052l210.159-218.741 C513.13,130.626,513.13,123.295,508.609,118.774z M243.986,349.323l-16.877-18.447l11.698-38.447l29.139,15.678l15.682,29.145 L243.986,349.323z M476.036,110.577L291.414,296.372l-11.728-11.728l185.804-184.631l10.547,10.546 C476.036,110.567,476.036,110.571,476.036,110.577z"></path> </g> </g></svg>
+                  <dt class="flex gap-3 pb-3 border-b-2 border-darker-green min-h-[3.4rem]">
+                      <div class="h-12 w-12 flex flex-shrink-0 items-center justify-center border-2 border-darker-blue rounded-xl bg-beige text-beige">
+                        <i class="fa-regular fa-paper-plane text-[32px] text-[#141E46]"></i>
                       </div>
-                      <p class="ml-16 text-xl leading-6 font-bold text-darker-green">Заяви поръчка</p>
-                    </dt>
-                  <dd class="ml-16 text-base text-darker-blue">След като се регистрирате направете поръчка до адрес.</dd>
+                      <div class="flex items-center">
+                        <p class="text-3xl leading-6 font-bold text-darker-green">Регистрирай се и заяви поръчка</p>
+                      </div>
+                  </dt>
+                  <dd class="text-left lg:text-center pt-2 text-xl text-darker-blue">След успешна регистрация можеш да поръчаш до адрес на Спиди или Еконт.</dd>
                 </div>
 
                 <div class="relative bg-beige rounded-xl p-3">
-                  <dt>
-                    <div class="absolute flex items-center justify-center border-2 border-darker-blue h-12 w-12 rounded-xl  bg-beige text-beige">
-                      <svg height="24px" width="24px" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M9.29289 1.29289C9.48043 1.10536 9.73478 1 10 1H18C19.6569 1 21 2.34315 21 4V9C21 9.55228 20.5523 10 20 10C19.4477 10 19 9.55228 19 9V4C19 3.44772 18.5523 3 18 3H11V8C11 8.55228 10.5523 9 10 9H5V20C5 20.5523 5.44772 21 6 21H9C9.55228 21 10 21.4477 10 22C10 22.5523 9.55228 23 9 23H6C4.34315 23 3 21.6569 3 20V8C3 7.73478 3.10536 7.48043 3.29289 7.29289L9.29289 1.29289ZM6.41421 7H9V4.41421L6.41421 7ZM17.8003 14.3564C18.0771 13.8813 17.9184 13.2717 17.4449 12.992L14.8873 11.4811C14.1351 11.0367 13.1815 11.132 12.5321 11.7165L10.9322 13.1564C10.2432 13.7765 10.0706 14.7887 10.515 15.6021L12.034 18.3817C12.304 18.8758 12.9285 19.0497 13.4149 18.7662L14.4966 18.136C14.9249 17.8864 15.4715 17.9883 15.7811 18.3755L16.7004 19.5254L16.8845 19.3816C17.0936 19.2183 17.359 19.1448 17.6223 19.1772C17.8856 19.2097 18.1252 19.3454 18.2884 19.5545L19.4397 21.03C19.9282 21.656 20.9163 21.4903 21.174 20.7393L21.2714 20.4553L17.3143 16.7279C16.9757 16.4089 16.9018 15.8985 17.136 15.4966L17.8003 14.3564ZM18.4622 11.2701C19.8826 12.1092 20.3589 13.9378 19.5283 15.3633L19.2641 15.8169L23.1123 19.4418C23.3982 19.7111 23.4999 20.1228 23.3725 20.4943L23.0657 21.3884C22.2927 23.6415 19.3284 24.1383 17.863 22.2604L17.3271 21.5736L17.1522 21.7102C16.7204 22.0473 16.0978 21.9744 15.7557 21.5465L14.7578 20.2985L14.4218 20.4943C12.9624 21.3446 11.0889 20.823 10.2789 19.3408L8.75998 16.5611C7.87103 14.9344 8.2163 12.91 9.59422 11.6698L11.1942 10.2299C12.493 9.06095 14.4002 8.87035 15.9046 9.75912L18.4622 11.2701ZM13.5 16C14.3284 16 15 15.3284 15 14.5C15 13.6716 14.3284 13 13.5 13C12.6716 13 12 13.6716 12 14.5C12 15.3284 12.6716 16 13.5 16Z" fill="#141E46"></path> </g></svg>
-                    </div>
-                    <p class="ml-16 text-xl leading-6 font-bold text-darker-green">Активирай акаунта си</p>
+                  <dt class="flex gap-3 pb-3 border-b-2 border-darker-green min-h-[3.4rem]">
+                      <div class="h-12 w-12 flex flex-shrink-0 items-center justify-center border-2 border-darker-blue rounded-xl bg-beige text-beige">
+                        <i class="fa-solid fa-key text-[32px] text-[#141E46]"></i>
+                      </div>
+                      <div class="flex items-center">
+                        <p class="text-3xl leading-6 font-bold text-darker-green">Активирай акаунта си</p>
+                      </div>
                   </dt>
-                  <dd class="ml-16 text-base text-darker-blue">На адрес ще получите пратка с подаръци и лист със специален код за активация.</dd>
+                  <dd class="text-left lg:text-center pt-2 text-xl text-darker-blue">На адрес ще получите пратка с подаръци и лист със специален код за активация.</dd>
                 </div>
 
                 <div class="relative bg-beige rounded-xl p-3">
-                  <dt>
-                    <div class="absolute flex items-center justify-center border-2 border-darker-blue h-12 w-12 rounded-xl bg-beige text-beige">
-                      <svg height="24px" width="24px" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#141E46"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M19.5617 7C19.7904 5.69523 18.7863 4.5 17.4617 4.5H6.53788C5.21323 4.5 4.20922 5.69523 4.43784 7" stroke="#141E46" stroke-width="1.5"></path> <path d="M17.4999 4.5C17.5283 4.24092 17.5425 4.11135 17.5427 4.00435C17.545 2.98072 16.7739 2.12064 15.7561 2.01142C15.6497 2 15.5194 2 15.2588 2H8.74099C8.48035 2 8.35002 2 8.24362 2.01142C7.22584 2.12064 6.45481 2.98072 6.45704 4.00434C6.45727 4.11135 6.47146 4.2409 6.49983 4.5" stroke="#141E46" stroke-width="1.5"></path> <path d="M21.1935 16.793C20.8437 19.2739 20.6689 20.5143 19.7717 21.2572C18.8745 22 17.5512 22 14.9046 22H9.09536C6.44881 22 5.12553 22 4.22834 21.2572C3.33115 20.5143 3.15626 19.2739 2.80648 16.793L2.38351 13.793C1.93748 10.6294 1.71447 9.04765 2.66232 8.02383C3.61017 7 5.29758 7 8.67239 7H15.3276C18.7024 7 20.3898 7 21.3377 8.02383C22.0865 8.83268 22.1045 9.98979 21.8592 12" stroke="#141E46" stroke-width="1.5" stroke-linecap="round"></path> <path d="M14.5812 13.6159C15.1396 13.9621 15.1396 14.8582 14.5812 15.2044L11.2096 17.2945C10.6669 17.6309 10 17.1931 10 16.5003L10 12.32C10 11.6273 10.6669 11.1894 11.2096 11.5258L14.5812 13.6159Z" stroke="#141E46" stroke-width="1.5"></path> </g></svg>
-                    </div>
-                    <p class="ml-16 text-xl leading-6 font-bold text-darker-green">Гледай видеата на воля</p>
+                  <dt class="flex gap-3 pb-3 border-b-2 border-darker-green min-h-[3.4rem]">
+                      <div class="h-12 w-12 flex flex-shrink-0 items-center justify-center border-2 border-darker-blue rounded-xl bg-beige text-beige">
+                        <i class="fa-solid fa-circle-play text-[32px] text-[#141E46]"></i>
+                      </div>
+                      <div class="flex items-center">
+                        <p class="text-3xl leading-6 font-bold text-darker-green">Гледай видеата на воля</p>
+                      </div>
                   </dt>
-                  <dd class="ml-16 text-base text-darker-blue">Като въведете кода в съответната форма ще получите доживотен достъп до всички видеа в курса.</dd>
+                  <dd class="text-left lg:text-center pt-2 text-xl text-darker-blue">Като въведете кода в съответната форма ще получите доживотен достъп до всички видеа в курса.</dd>
                 </div>
               </dl>
           </div>
@@ -127,7 +134,7 @@
       <hr class="w-full md:w-[90%] h-[3px] mx-auto border-0 rounded bg-beige">
     </div>
 
-    <h2 class="text-center font-extrabold text-6xl py-8 text-beige bg-darker-green">Съдържание на кутията,<br>която получавате при поръчка</h2>
+    <h2 class="text-center font-extrabold uppercase text-6xl py-8 text-beige bg-darker-green">Подаръци, които получавате <br/> заедно с курса</h2>
 
 
     <div class="bg-darker-green">
@@ -136,15 +143,19 @@
             <div class="flex flex-col-reverse justify-between xl:flex-row items-center xl:items-start xl:gap-6">
               <div class="my-auto">
                 <h2 class="text-3xl text-center tracking-tight font-extrabold text-beige sm:text-4xl md:text-5xl">
-                  <span class="block">Подарък към курса</span>
+                  <span class="block uppercase mb-3">Подарък към курса:</span>
                   <span class="block text-lighter-green">Мъдрости от Пепелта</span>
                 </h2>
                 <p class="mt-3 text-center text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
                   Тя съдържа вдъхновяващи сентенции за живота, които биха ви помогнали в трудните и предизвикателни моменти през процеса на спиране на цигарите, като ви накара да се почувствате по-спокойни и уверени в собствените си сили, че ще се справите с проблема.
                 </p>
+                <p class="mt-3 text-center text-3xl text-beige font-bold">
+                  Цена: <span class="line-through">21.00 лева</span> 
+                  <span class="text-lighter-green font-extrabold ml-2 text-4xl">0.00 лева</span>
+                </p>
                 <div class="mt-5 sm:mt-8 mx-auto">
                   <div class="rounded-md shadow">
-                    <a href="https://k-kostadinov.store/" class="w-full transition-colors duration-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                    <a href="https://krasimir-kostadinov.eu/" class="w-full uppercase transition-colors duration-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                       Виж книгата
                     </a>
                   </div>
@@ -167,13 +178,17 @@
               </div>
               <div class="my-auto">
                 <h2 class="text-3xl text-center tracking-tight font-extrabold text-beige sm:text-4xl md:text-5xl">
-                  <span class="block mb-3">Подарък към курса</span>
+                  <span class="block uppercase mb-3">Подарък към курса:</span>
                   <span class="block text-lighter-green">Водена терапия</span>
                   <span class="block">&</span>
                   <span class="block text-lighter-green">Антистрес дневник</span>
                 </h2>
-                <p class="mt-3 text-center text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-                  Това реално са два продукта, с които се гордеем много. Те са наше творение, чиято цел е да помогнат на човек да си стъпи на краката и освободи от излишния стрес.
+                <p class="mt-3 text-center text-xl text-beige font-bold sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 md:text-2xl xl:mx-0">
+                    Представяме ви два уникални инструмента за личностно развитие и емоционален баланс. Водената терапия и антистрес дневникът са създадени с цел да ви помогнат да изградите по-силна психическа устойчивост и да развиете ефективни техники за справяне със стреса по време на процеса на отказване от цигарите.
+                </p>
+                <p class="mt-3 text-center text-3xl text-beige font-bold">
+                  Цена: <span class="line-through">25.00 лева</span> 
+                  <span class="text-lighter-green font-extrabold ml-2 text-4xl">0.00 лева</span>
                 </p>
               </div>
               <div class="xl:mt-0 xl:w-1/2 min-w-[400px] max-w-[500px] overflow-hidden rounded-2xl p-1 bg-gradient-to-t xl:bg-gradient-to-r from-darker-green to-darker-blue">
@@ -190,15 +205,19 @@
             <div class="flex flex-col justify-between pt-10 xl:pt-0 xl:flex-row-reverse items-center xl:items-start xl:gap-6">
               <div class="my-auto w-3/4 xl:w-1/2">
                 <h2 class="text-3xl text-center tracking-tight font-extrabold text-beige sm:text-4xl md:text-5xl">
-                  <span class="block">Подарък към курса</span>
-                  <span class="block text-lighter-green">Мотивационни карти</span>
+                  <span class="block uppercase mb-3">Подарък към курса:</span>
+                  <span class="block text-lighter-green">Карти за намразване на цигарите</span>
                 </h2>
                 <p class="mt-3 text-center text-base text-beige font-bold sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl xl:mx-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum blanditiis nam voluptas nobis voluptatum, qui a adipisci quia id nesciunt eaque tempora tenetur quam aut sapiente iure voluptate pariatur quisquam!
+                  Това са сто различни кратки сентенции, събрани в петдесет карти, чиято цел е да Ви накарат да намразите цигарите и навика на пушене.
+                </p>
+                <p class="mt-3 text-center text-3xl text-beige font-bold">
+                  Цена: <span class="line-through">24.00 лева</span> 
+                  <span class="text-lighter-green font-extrabold ml-2 text-4xl">0.00 лева</span>
                 </p>
                 <div class="mt-5 sm:mt-8 mx-auto">
                   <div class="rounded-md shadow">
-                    <a href="https://k-kostadinov.store/" target="_blank" class="w-full transition-colors duration-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
+                    <a href="https://krasimir-kostadinov.eu/" target="_blank" class="w-full uppercase transition-colors duration-300 flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-beige bg-darker-green hover:bg-darker-blue hover:text-darker-green md:py-4 md:text-3xl md:px-10">
                       Виж картите
                     </a>
                   </div>
@@ -206,7 +225,7 @@
               </div>
               <div class="w-full xl:w-3/4 flex justify-center overflow-hidden bg-gradient-to-t xl:bg-gradient-to-r from-lighter-green via-darker-green to-darker-blue">
                 <div class="xl:mt-0 w-[600px] overflow-hidden">
-                  <img class="w-full h-full object-cover" src="assets/Transparent-cardbox.png" alt="Book Image">
+                  <img class="w-full h-full object-cover" src="assets/TransparentCardbox-NEW.png" alt="Book Image">
                 </div>
               </div>
             </div>
