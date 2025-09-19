@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { OrderService } from '../../Services/order.service';
 import IOrderCodeDTO from '../../Models/OrderCodeDTO.model';
 import { AuthService } from 'src/app/Services/auth.service';
-import { RecaptchaComponent } from 'ng-recaptcha';
+import { RecaptchaComponent } from 'ng-recaptcha-2';
 
 @Component({
     selector: 'app-redeem-code',

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RecaptchaComponent } from 'ng-recaptcha';
+import { RecaptchaComponent } from 'ng-recaptcha-2';
 import IRegisterUser from 'src/app/Models/RegisterUser.model';
 import { AuthService } from 'src/app/Services/auth.service';
 import { RegisterValidators } from 'src/app/Validators/register-validators';
