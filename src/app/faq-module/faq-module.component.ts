@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Input, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'app-faq-module',
-  templateUrl: './faq-module.component.html',
-  styleUrl: './faq-module.component.scss'
+    selector: 'app-faq-module',
+    templateUrl: './faq-module.component.html',
+    styleUrl: './faq-module.component.scss',
+    standalone: false
 })
 export class FaqModuleComponent implements AfterViewInit, OnDestroy{
   @Input() titleQuestionSpan1: string = '';

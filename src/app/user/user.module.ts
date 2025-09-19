@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RegisterComponent } from './register/register.component';
 import { UserRoutingModule } from './user-routing.module';
-import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
+// import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
 
 
 @NgModule({
@@ -19,8 +19,8 @@ import { RecaptchaModule, RecaptchaFormsModule } from "ng-recaptcha";
     SharedModule,
     ReactiveFormsModule,
     UserRoutingModule,
-    RecaptchaModule,
-    RecaptchaFormsModule
+    // RecaptchaModule,
+    // RecaptchaFormsModule
   ]
 })
 export class UserModule { }

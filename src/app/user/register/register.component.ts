@@ -7,9 +7,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { RegisterValidators } from 'src/app/Validators/register-validators';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    standalone: false
 })
 export class RegisterComponent {
   @ViewChild('captchaRef') captchaRef!: RecaptchaComponent;

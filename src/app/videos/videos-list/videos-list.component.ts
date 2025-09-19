@@ -5,9 +5,10 @@ import IVideoSlim from 'src/app/Models/VideoSlim.model';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
-  selector: 'app-videos-list',
-  templateUrl: './videos-list.component.html',
-  styleUrls: ['./videos-list.component.scss']
+    selector: 'app-videos-list',
+    templateUrl: './videos-list.component.html',
+    styleUrls: ['./videos-list.component.scss'],
+    standalone: false
 })
 export class VideosListComponent implements OnInit {
   initialVideos? : IVideoSlim[];

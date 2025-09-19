@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { OrderComponent } from './order/order.component';
 import { RedeemCodeComponent } from './redeem-code/redeem-code.component';
 import { OrdersRoutingModule } from './orders-routing.module';
-import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+// import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 
 
@@ -20,8 +20,8 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
     ReactiveFormsModule,
     SharedModule,
     OrdersRoutingModule,
-    RecaptchaModule,
-    RecaptchaFormsModule
+    // RecaptchaModule,
+    // RecaptchaFormsModule
   ]
 })
 export class OrdersModule { }

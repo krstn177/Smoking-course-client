@@ -2,9 +2,10 @@ import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/cor
 import { AuthService } from '../Services/auth.service';
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+    selector: 'app-landing',
+    templateUrl: './landing.component.html',
+    styleUrls: ['./landing.component.scss'],
+    standalone: false
 })
 export class LandingComponent implements AfterViewInit{
   private secondVideo: HTMLVideoElement | null = null;

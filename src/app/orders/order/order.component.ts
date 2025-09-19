@@ -8,9 +8,10 @@ import { LoaderService } from '../../Services/loader.service';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+    selector: 'app-order',
+    templateUrl: './order.component.html',
+    styleUrls: ['./order.component.scss'],
+    standalone: false
 })
 export class OrderComponent implements OnInit {
   reviewStage: boolean = false;

@@ -5,9 +5,10 @@ import IVideoCreate from 'src/app/Models/VideoCreate.model';
 import { VideoService } from 'src/app/Services/video.service';
 
 @Component({
-  selector: 'app-create-video',
-  templateUrl: './create-video.component.html',
-  styleUrls: ['./create-video.component.scss']
+    selector: 'app-create-video',
+    templateUrl: './create-video.component.html',
+    styleUrls: ['./create-video.component.scss'],
+    standalone: false
 })
 export class CreateVideoComponent {
   inSubmission = false;

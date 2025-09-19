@@ -6,9 +6,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { RecaptchaComponent } from 'ng-recaptcha';
 
 @Component({
-  selector: 'app-redeem-code',
-  templateUrl: './redeem-code.component.html',
-  styleUrls: ['./redeem-code.component.scss']
+    selector: 'app-redeem-code',
+    templateUrl: './redeem-code.component.html',
+    styleUrls: ['./redeem-code.component.scss'],
+    standalone: false
 })
 export class RedeemCodeComponent {
   @ViewChild('captchaRef') captchaRef!: RecaptchaComponent;

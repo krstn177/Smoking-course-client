@@ -8,9 +8,10 @@ import { LoaderService } from 'src/app/Services/loader.service';
 import { VideoService } from 'src/app/Services/video.service';
 
 @Component({
-  selector: 'app-video-page',
-  templateUrl: './video-page.component.html',
-  styleUrl: './video-page.component.scss'
+    selector: 'app-video-page',
+    templateUrl: './video-page.component.html',
+    styleUrl: './video-page.component.scss',
+    standalone: false
 })
 export class VideoPageComponent implements OnInit {
   videoDataObj: IVideo | null = null;
