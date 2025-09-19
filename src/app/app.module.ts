@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,34 +18,28 @@ import { AboutComponent } from './about/about.component';
 import { PersonalInfoRulesComponent } from './personal-info-rules/personal-info-rules.component';
 import { TermsComponent } from './terms/terms.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    LandingComponent,
-    FaqModuleComponent,
-    NotFoundComponent,
-    AboutComponent,
-    PersonalInfoRulesComponent,
-    TermsComponent,
-    FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    UserModule,
-    SharedModule,
-    AdminModule,
-    OrdersModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavComponent,
+        LandingComponent,
+        FaqModuleComponent,
+        NotFoundComponent,
+        AboutComponent,
+        PersonalInfoRulesComponent,
+        TermsComponent,
+        FooterComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        UserModule,
+        SharedModule,
+        AdminModule,
+        OrdersModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
