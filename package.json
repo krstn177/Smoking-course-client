@@ -21,7 +21,6 @@
     "@types/video.js": "^7.3.56",
     "@videojs/themes": "^1.0.1",
     "jwt-decode": "^4.0.0",
-    "ng-recaptcha": "^13.2.1",
     "rxjs": "~7.8.0",
     "spdy": "^4.0.2",
     "tslib": "^2.3.0",
